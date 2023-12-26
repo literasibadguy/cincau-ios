@@ -22,11 +22,36 @@ struct bestokApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ConverseView()
+            
+   
         }
         .modelContainer(sharedModelContainer)
+        
+        #if os(visionOS)
+        // Defines an immersive space to present a destination in which to watch the video.
+        ImmersiveSpace(for: String.self) { $destination in
+            SphereView()
+        }
+        // Set the immersion style to progressive, so the user can use the crown to dial in their experience.
+        .immersionStyle(selection: .constant(.progressive), in: .progressive)
+        #endif
+            }
+}
+
+@available(visionOS, unavailable)
+class OrientationTracker: ObservableObject {
+    var deviceMajorAxis: CGFloat = 0
+    func setDeviceMajorAxis() {
+        let bounds = UIScreen.main.bounds
+        let height = max(bounds.height, bounds.width) /// device's longest dimension
+        let width = min(bounds.height, bounds.width)  /// device's shortest dimension
+        let orientation = UIDevice.current.orientation
+        deviceMajorAxis = (orientation == .portrait || orientation == .unknown) ? height : width
     }
 }
+

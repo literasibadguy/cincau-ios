@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import RealityKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext

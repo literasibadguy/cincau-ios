@@ -15,6 +15,18 @@
 		B63A7A702B390A4200A08210 /* bestokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A6F2B390A4200A08210 /* bestokTests.swift */; };
 		B63A7A7A2B390A4200A08210 /* bestokUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A792B390A4200A08210 /* bestokUITests.swift */; };
 		B63A7A7C2B390A4200A08210 /* bestokUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A7B2B390A4200A08210 /* bestokUITestsLaunchTests.swift */; };
+		B63A7A892B390AB100A08210 /* TikTokDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A882B390AB100A08210 /* TikTokDownloader.swift */; };
+		B63A7A8B2B390BC100A08210 /* ShortVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */; };
+		B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */; };
+		B63A7A902B39126900A08210 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A8F2B39126900A08210 /* VideoController.swift */; };
+		B63A7A922B39159200A08210 /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A912B39159200A08210 /* AVPlayerView.swift */; };
+		B63A7A952B391B2700A08210 /* TiktokVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A942B391B2700A08210 /* TiktokVideoData.swift */; };
+		B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A962B391FB500A08210 /* TikTokTranslator.swift */; };
+		B63A7A992B39242D00A08210 /* ConverseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A982B39242D00A08210 /* ConverseView.swift */; };
+		B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A9B2B3989AA00A08210 /* VideoCarousel.swift */; };
+		B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */; };
+		B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474322B39BFDF00D14ABF /* SphereView.swift */; };
+		B65474362B39C00800D14ABF /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474352B39C00800D14ABF /* Destination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +58,19 @@
 		B63A7A752B390A4200A08210 /* bestokUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bestokUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63A7A792B390A4200A08210 /* bestokUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestokUITests.swift; sourceTree = "<group>"; };
 		B63A7A7B2B390A4200A08210 /* bestokUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestokUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B63A7A882B390AB100A08210 /* TikTokDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokDownloader.swift; sourceTree = "<group>"; };
+		B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortVideoPlayer.swift; sourceTree = "<group>"; };
+		B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortVideoPlayerViewModel.swift; sourceTree = "<group>"; };
+		B63A7A8F2B39126900A08210 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		B63A7A912B39159200A08210 /* AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
+		B63A7A942B391B2700A08210 /* TiktokVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiktokVideoData.swift; sourceTree = "<group>"; };
+		B63A7A962B391FB500A08210 /* TikTokTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokTranslator.swift; sourceTree = "<group>"; };
+		B63A7A982B39242D00A08210 /* ConverseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverseView.swift; sourceTree = "<group>"; };
+		B63A7A9A2B3984C400A08210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B63A7A9B2B3989AA00A08210 /* VideoCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCarousel.swift; sourceTree = "<group>"; };
+		B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewModifiers.swift; sourceTree = "<group>"; };
+		B65474322B39BFDF00D14ABF /* SphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereView.swift; sourceTree = "<group>"; };
+		B65474352B39C00800D14ABF /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,11 +121,19 @@
 		B63A7A5B2B390A4100A08210 /* bestok */ = {
 			isa = PBXGroup;
 			children = (
+				B65474342B39BFFA00D14ABF /* Models */,
+				B63A7A9A2B3984C400A08210 /* Info.plist */,
+				B63A7A932B391B1800A08210 /* Utils */,
+				B63A7A8E2B3911AA00A08210 /* Videos */,
 				B63A7A5C2B390A4100A08210 /* bestokApp.swift */,
 				B63A7A5E2B390A4100A08210 /* ContentView.swift */,
 				B63A7A602B390A4100A08210 /* Item.swift */,
 				B63A7A622B390A4200A08210 /* Assets.xcassets */,
 				B63A7A642B390A4200A08210 /* Preview Content */,
+				B63A7A882B390AB100A08210 /* TikTokDownloader.swift */,
+				B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */,
+				B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */,
+				B63A7A982B39242D00A08210 /* ConverseView.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -128,6 +161,35 @@
 				B63A7A7B2B390A4200A08210 /* bestokUITestsLaunchTests.swift */,
 			);
 			path = bestokUITests;
+			sourceTree = "<group>";
+		};
+		B63A7A8E2B3911AA00A08210 /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				B63A7A8F2B39126900A08210 /* VideoController.swift */,
+				B63A7A912B39159200A08210 /* AVPlayerView.swift */,
+				B63A7A9B2B3989AA00A08210 /* VideoCarousel.swift */,
+			);
+			path = Videos;
+			sourceTree = "<group>";
+		};
+		B63A7A932B391B1800A08210 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B63A7A942B391B2700A08210 /* TiktokVideoData.swift */,
+				B63A7A962B391FB500A08210 /* TikTokTranslator.swift */,
+				B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */,
+				B65474322B39BFDF00D14ABF /* SphereView.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		B65474342B39BFFA00D14ABF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B65474352B39C00800D14ABF /* Destination.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +324,19 @@
 			files = (
 				B63A7A5F2B390A4100A08210 /* ContentView.swift in Sources */,
 				B63A7A612B390A4100A08210 /* Item.swift in Sources */,
+				B65474362B39C00800D14ABF /* Destination.swift in Sources */,
+				B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */,
+				B63A7A952B391B2700A08210 /* TiktokVideoData.swift in Sources */,
+				B63A7A892B390AB100A08210 /* TikTokDownloader.swift in Sources */,
+				B63A7A922B39159200A08210 /* AVPlayerView.swift in Sources */,
+				B63A7A8B2B390BC100A08210 /* ShortVideoPlayer.swift in Sources */,
 				B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */,
+				B63A7A902B39126900A08210 /* VideoController.swift in Sources */,
+				B63A7A992B39242D00A08210 /* ConverseView.swift in Sources */,
+				B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */,
+				B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */,
+				B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */,
+				B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,11 +503,13 @@
 				DEVELOPMENT_TEAM = DLL674263K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = bestok/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,9 +517,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kicikku.bestok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -458,11 +537,13 @@
 				DEVELOPMENT_TEAM = DLL674263K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = bestok/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -470,9 +551,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = kicikku.bestok;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
 		};
