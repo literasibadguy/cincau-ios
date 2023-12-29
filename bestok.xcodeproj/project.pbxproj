@@ -27,6 +27,11 @@
 		B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */; };
 		B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474322B39BFDF00D14ABF /* SphereView.swift */; };
 		B65474362B39C00800D14ABF /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474352B39C00800D14ABF /* Destination.swift */; };
+		B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E377372B3E55B3009B8D10 /* StoreKit.framework */; };
+		B6EE470C2B3CF54C0048A604 /* Karrik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6EE470A2B3CF54C0048A604 /* Karrik-Italic.ttf */; };
+		B6EE470D2B3CF54C0048A604 /* Karrik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6EE470B2B3CF54C0048A604 /* Karrik-Regular.ttf */; };
+		B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE470E2B3CF5730048A604 /* HomeView.swift */; };
+		B6EE47112B3CFA190048A604 /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE47102B3CFA190048A604 /* DonateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +76,12 @@
 		B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewModifiers.swift; sourceTree = "<group>"; };
 		B65474322B39BFDF00D14ABF /* SphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereView.swift; sourceTree = "<group>"; };
 		B65474352B39C00800D14ABF /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		B6E377372B3E55B3009B8D10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B6E377392B3E5719009B8D10 /* tokstore.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = tokstore.storekit; sourceTree = "<group>"; };
+		B6EE470A2B3CF54C0048A604 /* Karrik-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karrik-Italic.ttf"; sourceTree = "<group>"; };
+		B6EE470B2B3CF54C0048A604 /* Karrik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karrik-Regular.ttf"; sourceTree = "<group>"; };
+		B6EE470E2B3CF5730048A604 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B6EE47102B3CFA190048A604 /* DonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,10 +113,12 @@
 		B63A7A502B390A4100A08210 = {
 			isa = PBXGroup;
 			children = (
+				B6E377392B3E5719009B8D10 /* tokstore.storekit */,
 				B63A7A5B2B390A4100A08210 /* bestok */,
 				B63A7A6E2B390A4200A08210 /* bestokTests */,
 				B63A7A782B390A4200A08210 /* bestokUITests */,
 				B63A7A5A2B390A4100A08210 /* Products */,
+				B6E377362B3E55B3009B8D10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +135,7 @@
 		B63A7A5B2B390A4100A08210 /* bestok */ = {
 			isa = PBXGroup;
 			children = (
+				B6EE47092B3CF4730048A604 /* Resources */,
 				B65474342B39BFFA00D14ABF /* Models */,
 				B63A7A9A2B3984C400A08210 /* Info.plist */,
 				B63A7A932B391B1800A08210 /* Utils */,
@@ -134,6 +149,8 @@
 				B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */,
 				B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */,
 				B63A7A982B39242D00A08210 /* ConverseView.swift */,
+				B6EE470E2B3CF5730048A604 /* HomeView.swift */,
+				B6EE47102B3CFA190048A604 /* DonateView.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -190,6 +207,23 @@
 				B65474352B39C00800D14ABF /* Destination.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B6E377362B3E55B3009B8D10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6E377372B3E55B3009B8D10 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6EE47092B3CF4730048A604 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B6EE470A2B3CF54C0048A604 /* Karrik-Italic.ttf */,
+				B6EE470B2B3CF54C0048A604 /* Karrik-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +330,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6EE470C2B3CF54C0048A604 /* Karrik-Italic.ttf in Resources */,
+				B6EE470D2B3CF54C0048A604 /* Karrik-Regular.ttf in Resources */,
 				B63A7A662B390A4200A08210 /* Preview Assets.xcassets in Resources */,
 				B63A7A632B390A4200A08210 /* Assets.xcassets in Resources */,
 			);
@@ -333,8 +369,10 @@
 				B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */,
 				B63A7A902B39126900A08210 /* VideoController.swift in Sources */,
 				B63A7A992B39242D00A08210 /* ConverseView.swift in Sources */,
+				B6EE47112B3CFA190048A604 /* DonateView.swift in Sources */,
 				B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */,
 				B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */,
+				B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */,
 				B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */,
 				B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */,
 			);

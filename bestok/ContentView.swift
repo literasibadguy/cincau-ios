@@ -12,6 +12,8 @@ import RealityKit
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
+    
+    let customFont = Font.custom("Karrik-Regular", fixedSize: 12)
 
     var body: some View {
         NavigationSplitView {

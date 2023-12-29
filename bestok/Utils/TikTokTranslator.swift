@@ -12,6 +12,45 @@ public struct TiktokTranslator {
     private let session = URLSession.shared
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
+    
+    
+    func translateForVideoData(_ url: String) async throws -> TiktokData {
+    
+
+        let url = try makeURL("https://tikwm.com", path: "/api", videoUrl: url)
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0", forHTTPHeaderField: "User-Agent")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+
+        
+        /*
+        struct RequestBody: Encodable {
+            let text: [String]
+            let source_lang: String
+            let target_lang: String
+        }
+        let body = RequestBody(text: [text], source_lang: sourceLanguage.uppercased(), target_lang: targetLanguage.uppercased())
+        request.httpBody = try encoder.encode(body)
+         */
+        struct Response: Decodable {
+            let videoData: TiktokData
+            
+            enum CodingKeys: String, CodingKey {
+                case videoData = "data"
+            }
+        }
+        struct DeepLTranslations: Decodable {
+            let detected_source_language: String
+            let text: String
+        }
+
+        let response: Response = try await decodedData(for: request)
+        return response.videoData
+    }
+    
     func translateForVideoUrl(_ url: String, from sourceLanguage: String, to targetLanguage: String) async throws -> URL {
     
 

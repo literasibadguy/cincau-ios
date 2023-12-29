@@ -26,7 +26,7 @@ struct bestokApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ConverseView()
+            HomeView()
             
    
         }

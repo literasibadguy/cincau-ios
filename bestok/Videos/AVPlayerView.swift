@@ -22,6 +22,7 @@ struct AVPlayerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {
         if uiViewController.player == nil {
             uiViewController.player = player
+            uiViewController.showsPlaybackControls = false
             player.play()
         }
     }
