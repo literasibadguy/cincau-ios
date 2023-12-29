@@ -26,8 +26,7 @@ struct bestokApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
-            
+            TrendingFeedView()
    
         }
         .modelContainer(sharedModelContainer)

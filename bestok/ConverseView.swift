@@ -22,6 +22,30 @@ enum ConverseStatus: Equatable {
     case error
 }
 
+struct NavDismissBarView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            
+            Button(action: {
+                dismiss()
+            }, label: {
+                Image("xmark")
+                    .frame(width: 33, height: 33)
+                    .background(.regularMaterial)
+                    .clipShape(Circle()).foregroundStyle(.windowBackground)
+            })
+            
+
+        }
+        .padding().padding(.top, 45)
+    }
+}
+
+
 struct WhiteBorderButtonStyle: ButtonStyle {
     let padding: CGFloat
     
@@ -69,7 +93,10 @@ struct DetailVideoView: View {
     @State private var completed = false
     @State private var tiktokUrl = ""
     
-//    @ObservedObject private var converseViewModel: ConverseViewModel = ConverseViewModel(state: .havent_converse)
+    @State private var show_share_sheet = false
+    
+    @State private var is_timeline = true
+    
     
     var ConverseButton: some View {
         Button("Download Video") {
@@ -81,19 +108,21 @@ struct DetailVideoView: View {
         ZStack {
             Color(.black).ignoresSafeArea()
             
-            ShortVideoPlayer(url: videoData.hdPlay, video_size: .constant(nil), controller: VideoController())
+            ShortVideoPlayer(url: videoData.play, video_size: .constant(nil), controller: VideoController())
             
             VStack {
-                HStack {
+                HStack() {
+                    
+                    
                     
                     VStack(alignment: .leading) {
-                        Text(videoData.author.nickname).font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
-                        Text(videoData.author.uniqueId).font(karrik_font(.subheadline, font_size: 1)).foregroundStyle(.white)
+                        Text(videoData.author.nickname).font(karrik_font(.title, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(videoData.author.uniqueId).font(karrik_font(.subheadline, font_size: 1)).foregroundStyle(.windowBackground)
                     }
                     
                     Spacer()
                     
-                }.padding()
+                }.padding().padding(.top, 45)
                 
                 
                 Spacer()
@@ -103,21 +132,56 @@ struct DetailVideoView: View {
                 
                 Spacer()
                 
-                Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.white)
+                Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
                 
                 Button(action: {
 //                    Task {
 //                        let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
 //                        tiktokVideo = converseStatus
 //                    }
+                    show_share_sheet = true
                 }, label: {
                     HStack {
                         Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
                     }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
                 }).buttonStyle(WhiteBorderButtonStyle(padding: 16)).padding()
+
+                
+                
             }.padding(.bottom, 100)
             
+            VStack {
+                
+                Spacer()
+                
+                HStack {
+                    
+                    VStack(alignment: .leading) {
+                        Text(videoData.musicInfo.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(videoData.musicInfo.author).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                    }
+                    
+                    Spacer()
+                }
+            }.padding(.bottom, is_timeline ? 36 : 12).padding(.leading, 10)
+            
+        }.sheet(isPresented: $show_share_sheet) {
+            ShareSheet(activityItems: [videoData.hdPlay])
         }.overlay {
+            GeometryReader {_ in 
+                VStack {
+                    
+                    HStack {
+                        Spacer()
+                        NavDismissBarView()
+                        
+                    }
+                        
+                    Spacer()
+                }
+            }
+
+
             
         }.statusBarHidden(false)
     }
@@ -126,7 +190,6 @@ struct DetailVideoView: View {
         Task {
             let res = await converse_tiktok(linkUrl: tiktokUrl)
             DispatchQueue.main.async {
-//                self.converseViewModel.state = res
                 self.completed = true
             }
         }

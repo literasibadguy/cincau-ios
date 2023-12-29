@@ -47,6 +47,14 @@ struct ShortVideoPlayer: View {
                 AVPlayerView(player: model.player).ignoresSafeArea().frame(width: geo.size.height * 16 / 9, height: geo.size.height)
                     .position(x:geo.size.width / 2, y: geo.size.height / 2)
                 
+                if model.is_loading {
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .foregroundStyle(.windowBackground)
+                        .scaleEffect(CGSize(width: 1.5, height: 1.5))
+                }
+
+                
                 mute_button
                 
             }.onTapGesture(count: 2, perform: {
@@ -90,7 +98,7 @@ struct ShortVideoPlayer: View {
                 }
             }
             
-        }
+        }.padding(.bottom, 24)
     }
     
     
