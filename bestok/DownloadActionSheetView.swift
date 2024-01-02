@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DownloadActionSheetView: View {
     
+    let videoData: TiktokData
     let downloadAction: () -> Void
     
     @State private var sheetHeight: CGFloat = 360
@@ -28,9 +29,9 @@ struct DownloadActionSheetView: View {
                     Text("Downloads").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
                     
                     VStack(alignment: .leading, spacing: 12) {
-                        DownloadItemView(title: "Download with Watermark", size: 25, itemAction: downloadAction)
-                        DownloadItemView(title: "Download HD without Watermark", size: 45, itemAction: downloadAction)
-                        DownloadItemView(title: "Download Audio Only", size: 0, itemAction: downloadAction)
+                        DownloadItemView(title: "Download with Watermark", size: videoData.wmSize, itemAction: downloadAction)
+                        DownloadItemView(title: "Download 1080p", size: videoData.hdSize, itemAction: downloadAction)
+                        DownloadItemView(title: "Download 720p", size: videoData.size, itemAction: downloadAction)
                         
                     }.padding().frame(height: 360).overlay {
                         GeometryReader { geometry in
@@ -85,5 +86,5 @@ struct  DownloadItemView: View {
 }
 
 #Preview {
-    DownloadActionSheetView(downloadAction: {})
+    DownloadActionSheetView(videoData: .sample, downloadAction: {})
 }

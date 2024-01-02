@@ -40,7 +40,7 @@ struct NavDismissBarView: View {
             Button(action: {
                 dismiss()
             }, label: {
-                Image("xmark")
+                Image(systemName: "xmark.circle.fill")
                     .frame(width: 33, height: 33)
                     .background(.regularMaterial)
                     .clipShape(Circle()).foregroundStyle(.windowBackground)
@@ -98,8 +98,12 @@ struct DetailVideoView: View {
     @State private var is_timeline = true
     
     
-    @StateObject private var converseViewModel: ConverseViewModel = ConverseViewModel(state: .havent_converse)
+    @StateObject private var converseViewModel: ConverseViewModel
     
+    init(videoData: TiktokData) {
+        self.videoData = videoData
+        _converseViewModel = StateObject(wrappedValue: ConverseViewModel(state: .havent_converse, videoData: videoData))
+    }
     
     var ConverseButton: some View {
         Button("Download Video") {
@@ -145,17 +149,18 @@ struct DetailVideoView: View {
                     show_share_sheet = true
                 }, label: {
                     HStack {
-                        switch converseViewModel.state {
-                        case .havent_converse:
-                            Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-                        case .conversed(let uRL):
-                            Text("Completed").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-                        case .error:
-                            Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
-                        case .conversing:
-                            ProgressView()
+                        Group {
+                            switch converseViewModel.state {
+                            case .havent_converse:
+                                Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                            case .conversed(_):
+                                Text("Completed").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                            case .error:
+                                Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
+                            case .conversing:
+                                ProgressView()
+                            }
                         }
-                        
                     }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
                 }).buttonStyle(WhiteBorderButtonStyle(padding: 16)).padding()
 
@@ -179,7 +184,7 @@ struct DetailVideoView: View {
             }.padding(.bottom, is_timeline ? 36 : 12).padding(.leading, 10)
             
         }.sheet(isPresented: $show_share_sheet) {
-            DownloadActionSheetView(downloadAction: {
+            DownloadActionSheetView(videoData: videoData, downloadAction: {
                 show_share_sheet = true
                 converseViewModel.downloadVideo(url: videoData.hdPlay)
                 

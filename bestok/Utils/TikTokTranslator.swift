@@ -33,20 +33,15 @@ public class TiktokTranslator: ObservableObject {
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     
+    @Published var tiktokUrl = ""
+    
+    init() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(clipboardChanged),
+                                                       name: UIPasteboard.changedNotification, object: nil)
+    }
     
     func translateForVideoData(_ url: String) async throws -> TiktokData {
-        
-//        let trendingUrl = try trendingURL("https://tikwm.com", path: "/api/feed/list", regionUrl: "JP")
-//        
-//        print(trendingUrl.absoluteString)
-//
-//        var tempRequest = URLRequest(url: trendingUrl)
-//        tempRequest.httpMethod = "GET"
-//        tempRequest.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0", forHTTPHeaderField: "User-Agent")
-//        tempRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        
-//        let tempResponse: TrendingFeed = try await decodedData(for: tempRequest)
-//        print(tempResponse)
 
         let url = try makeURL("https://tikwm.com", path: "/api", videoUrl: url)
 
@@ -78,16 +73,6 @@ public class TiktokTranslator: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
 
-        
-        /*
-        struct RequestBody: Encodable {
-            let text: [String]
-            let source_lang: String
-            let target_lang: String
-        }
-        let body = RequestBody(text: [text], source_lang: sourceLanguage.uppercased(), target_lang: targetLanguage.uppercased())
-        request.httpBody = try encoder.encode(body)
-         */
         struct Response: Decodable {
             let videoData: TiktokData
             
@@ -152,28 +137,6 @@ public class TiktokTranslator: ObservableObject {
     }
     
 
-
-    
-    private func avAsset() {
-//        guard let exporter = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetHighestQuality) else { return }
-//        exporter.outputURL = outputURL
-//        exporter.outputFileType = .mp4
-//        exporter.exportAsynchronously {
-//            switch exporter.status {
-//            case .completed:
-//                print("exported at \(outputURL)")
-//                completion?(outputURL)
-//                UISaveVideoAtPathToSavedPhotosAlbum(outputURL.path,nil, nil, nil)
-//            case .failed:
-//                print("failed \(exporter.error.debugDescription)")
-//            case .cancelled:
-//                print("cancelled \(exporter.error.debugDescription)")
-//            default: break
-//            }
-//        }
-        
-    }
-    
     private func makeURL(_ baseUrl: String, path: String, videoUrl: String) throws -> URL {
         guard var components = URLComponents(string: baseUrl) else {
             throw URLError(.badURL)
@@ -194,6 +157,14 @@ public class TiktokTranslator: ObservableObject {
         return result
     }
 
+    @objc private func clipboardChanged(){
+           let pasteboardString: String? = UIPasteboard.general.string
+           if let theString = pasteboardString {
+               if theString.contains("tiktok.com") {
+                   tiktokUrl = theString
+               }
+           }
+       }
 }
 
 private extension URLSession {

@@ -14,8 +14,11 @@ class ConverseViewModel: NSObject, ObservableObject {
     
     @Published var downloading = false
     
-    init(state: ConverseStatus) {
+    let videoData: TiktokData
+    
+    init(state: ConverseStatus, videoData: TiktokData) {
         self.state = state
+        self.videoData = videoData
     }
     
     func downloadVideo(url: URL) {
@@ -95,7 +98,7 @@ extension ConverseViewModel:  URLSessionDownloadDelegate {
             }
             
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let destinationURL = documentsURL.appendingPathComponent("myVideo.mp4")
+            let destinationURL = documentsURL.appendingPathComponent("\(videoData.title).mp4")
             do {
                 try data.write(to: destinationURL)
                 saveVideoToAlbum(videoURL: destinationURL, albumName: "Cincau")

@@ -33,6 +33,21 @@
       "productID" : "generoustip",
       "referenceName" : "Generous Tip",
       "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "D9CA28B2",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "goodtip",
+      "referenceName" : "Good Tip",
+      "type" : "NonConsumable"
     }
   ],
   "settings" : {

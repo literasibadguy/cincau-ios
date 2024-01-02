@@ -41,7 +41,9 @@ struct GradientButtonStyle: ButtonStyle {
 struct HomeView: View {
     let customFont = Font.custom("Karrik-Regular", fixedSize: 32)
     
-    @ObservedObject private var converseViewModel: ConverseViewModel = ConverseViewModel(state: .havent_converse)
+
+    
+    @ObservedObject private var tiktokTranslator: TiktokTranslator = TiktokTranslator()
     
     @State private var tiktokUrl = ""
     
@@ -72,13 +74,14 @@ struct HomeView: View {
                     
                     VStack {
                         
-                        TextField("https://www.tiktok.com/@xxx/video/xxxxxxxx", text: $tiktokUrl).tint(.white).font(karrik_font(.normal, font_size: 1)).padding().foregroundStyle(.white)
+//                        TextField("https://www.tiktok.com/@xxx/video/xxxxxxxx", text: $tiktokTranslator.tiktokUrl).tint(.white).font(karrik_font(.normal, font_size: 1)).padding().foregroundStyle(.white)
+                        KeyInput
                     }
                     
                     Spacer()
                     Button(action: {
                         Task {
-                            let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
+                            let converseStatus = await converse_tiktok(linkUrl: tiktokTranslator.tiktokUrl)
                             tiktokVideo = converseStatus
                         }
                         
@@ -91,16 +94,7 @@ struct HomeView: View {
                     PHPhotoLibrary.requestAuthorization(for: .readWrite) { _ in
                         
                     }
-                    guard let tiktokPaste = UIPasteboard.general.string else {
-                        return
-                    }
-                    if tiktokPaste.contains("tiktok.com") {
-                        tiktokUrl = tiktokPaste
-                        Task {
-                            let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
-                            tiktokVideo = converseStatus
-                        }
-                    }
+                    
                 }.padding().toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: show_donate) {
@@ -117,10 +111,27 @@ struct HomeView: View {
 
     }
     
+    var KeyInput: some View {
+            HStack {
+                Image(systemName: "doc.on.clipboard")
+                    .foregroundColor(.gray)
+                    .onTapGesture {
+                        if let pastedkey = UIPasteboard.general.string {
+                            self.tiktokTranslator.tiktokUrl = pastedkey
+                        }
+                    }
+
+                TextField("", text: $tiktokTranslator.tiktokUrl).textContentType(.URL)                             .nsecLoginStyle(key:  self.tiktokTranslator.tiktokUrl, title: "Paste TikTok URL here")
+            }
+            .padding(.horizontal, 10)
+            .overlay {
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(.gray, lineWidth: 1)
+            }
+    }
+    
     func converse_tiktok(linkUrl: String) async -> TiktokData? {
-        let translator = TiktokTranslator()
-        
-        let conversed_tiktok = try? await translator.translateForVideoData(linkUrl)
+        let conversed_tiktok = try? await tiktokTranslator.translateForVideoData(linkUrl)
         
         guard let conversed_tiktok else {
             return nil
@@ -133,6 +144,37 @@ struct HomeView: View {
         show_support = true
     }
 
+    private func clipboardChanged(){
+            let pasteboardString: String? = UIPasteboard.general.string
+            if let theString = pasteboardString {
+                print("String is \(theString)")
+                // Do cool things with the string
+            }
+        }
+}
+
+extension View {
+    func placeholder<Content: View>(
+            when shouldShow: Bool,
+            alignment: Alignment = .leading,
+            @ViewBuilder placeholder: () -> Content) -> some View {
+
+            ZStack(alignment: alignment) {
+                placeholder().opacity(shouldShow ? 1 : 0)
+                self
+            }
+        }
+    
+    func nsecLoginStyle(key: String, title: String) -> some View {
+        self.placeholder(when: key.isEmpty) {
+            Text(title).foregroundStyle(.white.opacity(0.6))
+        }
+            .padding(10)
+            .autocapitalization(.none)
+            .autocorrectionDisabled(true)
+            .textInputAutocapitalization(.never)
+            .font(karrik_font(.normal, font_size: 1))
+    }
 }
 
 #Preview {
