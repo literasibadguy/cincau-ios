@@ -27,6 +27,8 @@
 		B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */; };
 		B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474322B39BFDF00D14ABF /* SphereView.swift */; };
 		B65474362B39C00800D14ABF /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474352B39C00800D14ABF /* Destination.swift */; };
+		B6BFDA3F2B401FD70021F536 /* ConverseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */; };
+		B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */; };
 		B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E377372B3E55B3009B8D10 /* StoreKit.framework */; };
 		B6E3773B2B3E78CA009B8D10 /* TrendVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */; };
 		B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773C2B3EF44F009B8D10 /* TrendingFeedView.swift */; };
@@ -79,6 +81,8 @@
 		B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewModifiers.swift; sourceTree = "<group>"; };
 		B65474322B39BFDF00D14ABF /* SphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereView.swift; sourceTree = "<group>"; };
 		B65474352B39C00800D14ABF /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverseViewModel.swift; sourceTree = "<group>"; };
+		B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActionSheetView.swift; sourceTree = "<group>"; };
 		B6E377372B3E55B3009B8D10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B6E377392B3E5719009B8D10 /* tokstore.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = tokstore.storekit; sourceTree = "<group>"; };
 		B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendVideoData.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				B6EE470E2B3CF5730048A604 /* HomeView.swift */,
 				B6EE47102B3CFA190048A604 /* DonateView.swift */,
 				B6E3773C2B3EF44F009B8D10 /* TrendingFeedView.swift */,
+				B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */,
+				B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 				B63A7A5F2B390A4100A08210 /* ContentView.swift in Sources */,
 				B63A7A612B390A4100A08210 /* Item.swift in Sources */,
 				B65474362B39C00800D14ABF /* Destination.swift in Sources */,
+				B6BFDA3F2B401FD70021F536 /* ConverseViewModel.swift in Sources */,
 				B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */,
 				B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */,
 				B63A7A952B391B2700A08210 /* TiktokVideoData.swift in Sources */,
@@ -384,6 +391,7 @@
 				B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */,
 				B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */,
 				B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */,
+				B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */,
 				B6E3773F2B3EFC67009B8D10 /* TiktokSamples.swift in Sources */,
 				B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */,
 				B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */,
@@ -554,6 +562,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bestok/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cincau;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Cincau requires access to your photo library to save videos to your device gallery";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Cincau accesses your video library when you downloaded video";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -588,6 +600,10 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = bestok/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Cincau;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Cincau requires access to your photo library to save videos to your device gallery";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Cincau accesses your video library when you downloaded video";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

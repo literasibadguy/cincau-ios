@@ -43,6 +43,7 @@ struct ShortVideoPlayer: View {
             let localFrame = geo.frame(in: .global)
             let centerY = globalCoordinate(localX: 0, localY: localFrame.midY, localGeometry: geo).y
             ZStack {
+                
 
                 AVPlayerView(player: model.player).ignoresSafeArea().frame(width: geo.size.height * 16 / 9, height: geo.size.height)
                     .position(x:geo.size.width / 2, y: geo.size.height / 2)

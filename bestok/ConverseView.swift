@@ -18,8 +18,15 @@ enum FontViewKind {
 
 enum ConverseStatus: Equatable {
     case havent_converse
+    case conversing
     case conversed(URL)
     case error
+}
+
+enum DownloadType: Equatable {
+    case hdPlay
+    case playWatermark
+    case play
 }
 
 struct NavDismissBarView: View {
@@ -78,13 +85,6 @@ func karrik_font(_ size: FontViewKind, font_size: Double) -> Font {
 }
 
 
-class ConverseViewModel: ObservableObject {
-    @Published var state: ConverseStatus
-    
-    init(state: ConverseStatus) {
-        self.state = state
-    }
-}
 
 struct DetailVideoView: View {
     
@@ -96,6 +96,9 @@ struct DetailVideoView: View {
     @State private var show_share_sheet = false
     
     @State private var is_timeline = true
+    
+    
+    @StateObject private var converseViewModel: ConverseViewModel = ConverseViewModel(state: .havent_converse)
     
     
     var ConverseButton: some View {
@@ -142,7 +145,17 @@ struct DetailVideoView: View {
                     show_share_sheet = true
                 }, label: {
                     HStack {
-                        Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                        switch converseViewModel.state {
+                        case .havent_converse:
+                            Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                        case .conversed(let uRL):
+                            Text("Completed").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                        case .error:
+                            Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
+                        case .conversing:
+                            ProgressView()
+                        }
+                        
                     }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
                 }).buttonStyle(WhiteBorderButtonStyle(padding: 16)).padding()
 
@@ -166,7 +179,11 @@ struct DetailVideoView: View {
             }.padding(.bottom, is_timeline ? 36 : 12).padding(.leading, 10)
             
         }.sheet(isPresented: $show_share_sheet) {
-            ShareSheet(activityItems: [videoData.hdPlay])
+            DownloadActionSheetView(downloadAction: {
+                show_share_sheet = true
+                converseViewModel.downloadVideo(url: videoData.hdPlay)
+                
+            }).frame(height: 360).presentationBackground(.clear)
         }.overlay {
             GeometryReader {_ in 
                 VStack {
@@ -194,6 +211,32 @@ struct DetailVideoView: View {
             }
         }
     }
+    
+//    private var downloadButtonsView: some View {
+//        return List {
+//            DownloadItemView(title: "Download HD", size: 45).onTapGesture {
+//                
+//            }
+//            DownloadItemView(title: "Download", size: 45).onTapGesture {
+//                
+//            }
+//            DownloadItemView(title: "Download with Watermark", size: 45).onTapGesture {
+//                
+//            }.listStyle(.plain)
+//        }
+//    }
+}
+
+struct BackgroundClearView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
 func converse_tiktok(linkUrl: String) async -> ConverseStatus {

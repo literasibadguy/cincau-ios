@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct  TipItem: View {
+fileprivate struct TipItem: View {
     
     let title: String
     let description: String
@@ -55,10 +55,8 @@ struct DonateView: View {
             
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
-                    Image("logo-nobg")
-                        .resizable()
-                        .frame(width: 50, height: 50)
-                    Text("Support Damus", comment: "Text calling for the user to support Damus through zaps")
+                    Text(verbatim:"🧋")
+                    Text("Support Cincau", comment: "Text calling for the user to support Damus through zaps")
                         .font(karrik_font(.title, font_size: 1))
                         .foregroundColor(.white)
                 }
@@ -66,13 +64,6 @@ struct DonateView: View {
                 Text("Help this humble Developer to create more apps and fun works", comment: "Text indicating the goal of developing Damus which the user can help with.")
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.white).font(karrik_font(.normal, font_size: 1))
-                
-                Text("An additional percentage of each zap will be sent to support Damus development", comment: "Text indicating that they can contribute zaps to support Damus development.")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .foregroundColor(.white)
-                
-                
-
                 
 //                HStack{
 //                    Spacer()
@@ -112,7 +103,7 @@ struct DonateView: View {
             }
             .padding(25)
         }
-        .frame(height: 370)
+        .frame(height: 250)
     }
 
 

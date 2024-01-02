@@ -6,6 +6,19 @@
 //
 
 import SwiftUI
+import Photos
+
+struct Blur: UIViewRepresentable {
+    var style: UIBlurEffect.Style = .dark
+
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: style))
+    }
+
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+        uiView.effect = UIBlurEffect(style: style)
+    }
+}
 
 struct GradientButtonStyle: ButtonStyle {
     let padding: CGFloat
@@ -18,7 +31,10 @@ struct GradientButtonStyle: ButtonStyle {
         return configuration.label
             .padding(padding)
             .background {
-                RoundedRectangle(cornerRadius: 12).fill(Color.blue)
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 12).fill(Color.white)
+                }
             }.scaleEffect(configuration.isPressed ? 0.85 : 1.0)
     }
 }
@@ -35,34 +51,68 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView(content: {
-            
-        VStack {
-            Spacer()
-            Text("Download TikTok Video without label watermark, high quality").font(karrik_font(.normal, font_size: 1))
-            TextField("https://www.tiktok.com/@xxx/video/xxxxxxxx", text: $tiktokUrl).font(karrik_font(.normal, font_size: 1)).padding()
-            
-            Spacer()
-            Button(action: {
-                Task {
-                    let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
-                    tiktokVideo = converseStatus
-                }
-            }, label: {
-                HStack {
-                    Text("Download").foregroundStyle(.white).font(karrik_font(.normal, font_size: 1))
-                }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
-            }).buttonStyle(GradientButtonStyle(padding: 16)).padding()
-        }.toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: show_donate) {
-                    Text("Support").font(karrik_font(.normal, font_size: 1))
-                }
+        
+            ZStack {
+                
+//                Image("aespa_scene", bundle: .main)
+                
+                Blur().background {
+                    Image("aespa_scene")
+                }.ignoresSafeArea()
+                
+                VStack(alignment: .leading) {
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Cincau").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
+
+                        Text("Download TikTok Video without label watermark, high quality").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.windowBackground)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack {
+                        
+                        TextField("https://www.tiktok.com/@xxx/video/xxxxxxxx", text: $tiktokUrl).tint(.white).font(karrik_font(.normal, font_size: 1)).padding().foregroundStyle(.white)
+                    }
+                    
+                    Spacer()
+                    Button(action: {
+                        Task {
+                            let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
+                            tiktokVideo = converseStatus
+                        }
+                        
+                    }, label: {
+                        HStack {
+                            Text("Download").foregroundStyle(.black).font(karrik_font(.normal, font_size: 1))
+                        }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
+                    }).buttonStyle(GradientButtonStyle(padding: 16)).padding()
+                }.onAppear {
+                    PHPhotoLibrary.requestAuthorization(for: .readWrite) { _ in
+                        
+                    }
+                    guard let tiktokPaste = UIPasteboard.general.string else {
+                        return
+                    }
+                    if tiktokPaste.contains("tiktok.com") {
+                        tiktokUrl = tiktokPaste
+                        Task {
+                            let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
+                            tiktokVideo = converseStatus
+                        }
+                    }
+                }.padding().toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: show_donate) {
+                            Text("Support").font(karrik_font(.normal, font_size: 1))
+                        }
+                    }
+                }.fullScreenCover(item: $tiktokVideo) { tiktokData in
+                    DetailVideoView(videoData: tiktokData)
+                }.sheet(isPresented: $show_support, content: {
+                    DonateView()
+                })
             }
-        }.fullScreenCover(item: $tiktokVideo) { tiktokData in
-            DetailVideoView(videoData: tiktokData)
-        }.sheet(isPresented: $show_support, content: {
-            DonateView()
-        })
         })
 
     }
