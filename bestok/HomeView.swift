@@ -117,7 +117,9 @@ struct HomeView: View {
                     .foregroundColor(.gray)
                     .onTapGesture {
                         if let pastedkey = UIPasteboard.general.string {
-                            self.tiktokTranslator.tiktokUrl = pastedkey
+                            if pastedkey.contains("tiktok.com") {
+                                self.tiktokTranslator.tiktokUrl = pastedkey
+                            }
                         }
                     }
 

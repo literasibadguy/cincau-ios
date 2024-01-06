@@ -24,14 +24,16 @@ struct DownloadActionSheetView: View {
                 }
                     .ignoresSafeArea()
                 
-                VStack {
+                VStack(spacing: 1) {
                     
-                    Text("Downloads").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
                     
+    
                     VStack(alignment: .leading, spacing: 12) {
+                        Text("Downloads").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
                         DownloadItemView(title: "Download with Watermark", size: videoData.wmSize, itemAction: downloadAction)
                         DownloadItemView(title: "Download 1080p", size: videoData.hdSize, itemAction: downloadAction)
                         DownloadItemView(title: "Download 720p", size: videoData.size, itemAction: downloadAction)
+                        
                         
                     }.padding().frame(height: 360).overlay {
                         GeometryReader { geometry in
@@ -44,6 +46,7 @@ struct DownloadActionSheetView: View {
                                            
             }.navigationTitle("Downloads").navigationBarTitleDisplayMode(.inline).background(.clear)
     }
+    
 }
 
 struct InnerHeightPreferenceKey: PreferenceKey {
@@ -68,7 +71,7 @@ struct  DownloadItemView: View {
             VStack(alignment: .leading, spacing: 4) {
                     Text(title).foregroundStyle(.windowBackground)
                     
-                    Text(String(size)).foregroundStyle(.windowBackground)
+                    Text(formatSizeFile(size)).foregroundStyle(.windowBackground)
                     
             }.font(karrik_font(.normal, font_size: 1))
             
@@ -82,6 +85,12 @@ struct  DownloadItemView: View {
            
     }
     
+    private func formatSizeFile(_ byteCount: Int) -> String {
+        let formatter = ByteCountFormatter()
+        formatter.allowedUnits = [.useMB]
+        formatter.countStyle = .file
+        return formatter.string(fromByteCount: Int64(byteCount))
+    }
 
 }
 

@@ -13,7 +13,7 @@ struct TrendingFeed: Decodable {
     let code: Int
     let msg: String
     let processed_time: Double
-    let datas: [TiktokData]
+    let datas: [TrendVideo]
     
     enum CodingKeys: String, CodingKey {
         case code
@@ -22,10 +22,7 @@ struct TrendingFeed: Decodable {
         case datas = "data"
     }
     
-    struct TrendVideo: Decodable {
-        let video_id: String
-        let region: String
-    }
+
 }
 
 public class TiktokTranslator: ObservableObject {
@@ -62,7 +59,7 @@ public class TiktokTranslator: ObservableObject {
         return response.videoData
     }
     
-    func translateForVideoUrl(_ url: String, from sourceLanguage: String, to targetLanguage: String) async throws -> URL {
+    func translateForVideoUrl(_ url: String) async throws -> URL {
     
 
         let url = try makeURL("https://tikwm.com", path: "/api", videoUrl: url)
@@ -89,19 +86,21 @@ public class TiktokTranslator: ObservableObject {
         return response.videoData.hdPlay
     }
     
-    private func trendingURL(_ baseUrl: String, path: String, regionUrl: String) throws -> URL {
-        guard var components = URLComponents(string: baseUrl) else {
-            throw URLError(.badURL)
-        }
-        let queryItems = [URLQueryItem(name: "url", value: regionUrl), URLQueryItem(name: "hd", value: "1"), URLQueryItem(name: "region", value: regionUrl), URLQueryItem(name: "count", value: "10"), URLQueryItem(name: "cursor", value: "0"), URLQueryItem(name: "web", value: "1")]
-        components.path = path
-        components.queryItems = queryItems
+    func translateforUserPosts(_ uniqueId: String) async throws -> String {
+        
+        let url = try makeURL("https://tikwm.com", path: "/api/posts", videoUrl: uniqueId)
 
-        guard let url = components.url else {
-            throw URLError(.badURL)
-        }
-        return url
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0", forHTTPHeaderField: "User-Agent")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let response: TrendingFeed = try await decodedData(for: request)
+        
+        return ""
     }
+    
+
     
     private func download() {
         
@@ -136,6 +135,36 @@ public class TiktokTranslator: ObservableObject {
         }
     }
     
+    private func trendingURL(_ baseUrl: String, path: String, regionUrl: String) throws -> URL {
+        guard var components = URLComponents(string: baseUrl) else {
+            throw URLError(.badURL)
+        }
+        let queryItems = [URLQueryItem(name: "url", value: regionUrl), URLQueryItem(name: "hd", value: "1"), URLQueryItem(name: "region", value: regionUrl), URLQueryItem(name: "count", value: "10"), URLQueryItem(name: "cursor", value: "0"), URLQueryItem(name: "web", value: "1")]
+        components.path = path
+        components.queryItems = queryItems
+
+        guard let url = components.url else {
+            throw URLError(.badURL)
+        }
+        return url
+    }
+    
+    private func profileURL(_ baseUrl: String, path: String, uniqueId: String) throws -> URL {
+        guard var components = URLComponents(string: baseUrl) else {
+            throw URLError(.badURL)
+        }
+        
+//        https://www.tikwm.com/api/user/posts?unique_id=@fujiiian&hd=1
+        
+        let queryItems = [URLQueryItem(name: "unique_id", value: uniqueId), URLQueryItem(name: "hd", value: "1")]
+        components.path = path
+        components.queryItems = queryItems
+
+        guard let url = components.url else {
+            throw URLError(.badURL)
+        }
+        return url
+    }
 
     private func makeURL(_ baseUrl: String, path: String, videoUrl: String) throws -> URL {
         guard var components = URLComponents(string: baseUrl) else {

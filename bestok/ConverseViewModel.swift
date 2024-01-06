@@ -14,6 +14,9 @@ class ConverseViewModel: NSObject, ObservableObject {
     
     @Published var downloading = false
     
+    @Published var expectedWritten: Int = 0
+    @Published var totalWritten: Double = 0
+    
     let videoData: TiktokData
     
     init(state: ConverseStatus, videoData: TiktokData) {
@@ -31,8 +34,13 @@ class ConverseViewModel: NSObject, ObservableObject {
                 downloadTask.resume()
             }
             task.resume()
-            self.state = .conversing
-            downloading = true
+        
+        
+            Task { @MainActor in
+                self.state = .conversing
+                downloading = true
+            }
+            
         }
     
 
@@ -56,9 +64,9 @@ class ConverseViewModel: NSObject, ObservableObject {
                         let collectionFetchResult = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumPlaceholder.localIdentifier], options: nil)
                         guard let album = collectionFetchResult.firstObject else { return }
                         self.saveVideo(videoURL: videoURL, to: album)
-                        self.state = .conversed(videoURL)
+                        
                     } else {
-                        self.state = .error
+                        
                         print("Error creating album: \(error?.localizedDescription ?? "")")
                     }
                 })
@@ -102,8 +110,22 @@ extension ConverseViewModel:  URLSessionDownloadDelegate {
             do {
                 try data.write(to: destinationURL)
                 saveVideoToAlbum(videoURL: destinationURL, albumName: "Cincau")
+                Task { @MainActor in
+                    self.state = .conversed(destinationURL)
+                    self.downloading = false
+                }
             } catch {
+                Task { @MainActor in
+                    self.state = .error
+                    self.downloading = false
+                }
                 print("Error saving file:", error)
             }
         }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        totalWritten = downloadTask.progress.fractionCompleted
+//        expectedWritten = Int(totalBytesExpectedToWrite)
+//        totalWritten = Int(totalBytesWritten)
+    }
 }

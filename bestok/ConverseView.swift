@@ -94,6 +94,7 @@ struct DetailVideoView: View {
     @State private var tiktokUrl = ""
     
     @State private var show_share_sheet = false
+    @State private var show_texts = true
     
     @State private var is_timeline = true
     
@@ -115,7 +116,11 @@ struct DetailVideoView: View {
         ZStack {
             Color(.black).ignoresSafeArea()
             
-            ShortVideoPlayer(url: videoData.play, video_size: .constant(nil), controller: VideoController())
+            ShortVideoPlayer(url: videoData.play, video_size: .constant(nil), controller: VideoController(), tapInteraction: {
+                withAnimation {
+                    show_texts.toggle()
+                }
+            })
             
             VStack {
                 HStack() {
@@ -139,7 +144,9 @@ struct DetailVideoView: View {
                 
                 Spacer()
                 
-                Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                if show_texts {
+                    Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                }
                 
                 Button(action: {
 //                    Task {
@@ -153,17 +160,24 @@ struct DetailVideoView: View {
                             switch converseViewModel.state {
                             case .havent_converse:
                                 Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                                
                             case .conversed(_):
                                 Text("Completed").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+                                
                             case .error:
                                 Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
+                                
                             case .conversing:
-                                ProgressView()
+                                Text("Downloading").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
+                                
                             }
                         }
                     }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
                 }).buttonStyle(WhiteBorderButtonStyle(padding: 16)).padding()
-
+                
+                if converseViewModel.downloading {
+                    ProgressView(value: converseViewModel.totalWritten)
+                }
                 
                 
             }.padding(.bottom, 100)
@@ -217,19 +231,7 @@ struct DetailVideoView: View {
         }
     }
     
-//    private var downloadButtonsView: some View {
-//        return List {
-//            DownloadItemView(title: "Download HD", size: 45).onTapGesture {
-//                
-//            }
-//            DownloadItemView(title: "Download", size: 45).onTapGesture {
-//                
-//            }
-//            DownloadItemView(title: "Download with Watermark", size: 45).onTapGesture {
-//                
-//            }.listStyle(.plain)
-//        }
-//    }
+
 }
 
 struct BackgroundClearView: UIViewRepresentable {
@@ -247,7 +249,7 @@ struct BackgroundClearView: UIViewRepresentable {
 func converse_tiktok(linkUrl: String) async -> ConverseStatus {
     let translator = TiktokTranslator()
     
-    let conversed_tiktok = try? await translator.translateForVideoUrl(linkUrl, from: "", to: "")
+    let conversed_tiktok = try? await translator.translateForVideoUrl(linkUrl)
     
     guard let conversed_tiktok else {
         return .error

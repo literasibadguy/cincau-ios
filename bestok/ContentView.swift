@@ -13,33 +13,37 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
+    @SceneStorage("ContentView.selected_mainmenu") var selected_menu: MainMenu = .home
     let customFont = Font.custom("Karrik-Regular", fixedSize: 12)
 
-    var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+    func MainContent() -> some View {
+        VStack {
+            switch selected_menu {
+            case .trending:
+                TrendingFeedView()
+            case .home:
+                HomeView()
+            case .support:
+                DonateView()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
         }
+    }
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            NavigationStack {
+                TabView {
+                    VStack {
+                        MainContent()
+                    }
+                }.tabViewStyle(.page(indexDisplayMode: .never))
+            }.navigationViewStyle(.stack)
+            
+            MainTabView(action: switch_mainmenu).padding([.bottom], 8).background(Color(uiColor: .systemBackground).ignoresSafeArea())
+        }
+    }
+    
+    func switch_mainmenu(_ mainmenu: MainMenu) {
+        self.selected_menu = mainmenu
     }
 
     private func addItem() {

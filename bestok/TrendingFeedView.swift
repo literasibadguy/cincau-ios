@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@MainActor
+
 struct TrendingFeedView: View {
     
     public enum IndexPosition {

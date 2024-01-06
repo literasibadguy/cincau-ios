@@ -15,7 +15,6 @@
 		B63A7A702B390A4200A08210 /* bestokTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A6F2B390A4200A08210 /* bestokTests.swift */; };
 		B63A7A7A2B390A4200A08210 /* bestokUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A792B390A4200A08210 /* bestokUITests.swift */; };
 		B63A7A7C2B390A4200A08210 /* bestokUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A7B2B390A4200A08210 /* bestokUITestsLaunchTests.swift */; };
-		B63A7A892B390AB100A08210 /* TikTokDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A882B390AB100A08210 /* TikTokDownloader.swift */; };
 		B63A7A8B2B390BC100A08210 /* ShortVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */; };
 		B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */; };
 		B63A7A902B39126900A08210 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A8F2B39126900A08210 /* VideoController.swift */; };
@@ -24,6 +23,9 @@
 		B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A962B391FB500A08210 /* TikTokTranslator.swift */; };
 		B63A7A992B39242D00A08210 /* ConverseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A982B39242D00A08210 /* ConverseView.swift */; };
 		B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A9B2B3989AA00A08210 /* VideoCarousel.swift */; };
+		B65080442B4801D600079FF7 /* ProfileFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65080432B4801D600079FF7 /* ProfileFeedView.swift */; };
+		B65080462B4925ED00079FF7 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65080452B4925ED00079FF7 /* Router.swift */; };
+		B65080482B493F1500079FF7 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65080472B493F1500079FF7 /* MainTabView.swift */; };
 		B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */; };
 		B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474322B39BFDF00D14ABF /* SphereView.swift */; };
 		B65474362B39C00800D14ABF /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474352B39C00800D14ABF /* Destination.swift */; };
@@ -68,7 +70,6 @@
 		B63A7A752B390A4200A08210 /* bestokUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bestokUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63A7A792B390A4200A08210 /* bestokUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestokUITests.swift; sourceTree = "<group>"; };
 		B63A7A7B2B390A4200A08210 /* bestokUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestokUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B63A7A882B390AB100A08210 /* TikTokDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TikTokDownloader.swift; sourceTree = "<group>"; };
 		B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortVideoPlayer.swift; sourceTree = "<group>"; };
 		B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortVideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		B63A7A8F2B39126900A08210 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
@@ -78,6 +79,9 @@
 		B63A7A982B39242D00A08210 /* ConverseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverseView.swift; sourceTree = "<group>"; };
 		B63A7A9A2B3984C400A08210 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B63A7A9B2B3989AA00A08210 /* VideoCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCarousel.swift; sourceTree = "<group>"; };
+		B65080432B4801D600079FF7 /* ProfileFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedView.swift; sourceTree = "<group>"; };
+		B65080452B4925ED00079FF7 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B65080472B493F1500079FF7 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B65474302B39BCD000D14ABF /* VisionViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewModifiers.swift; sourceTree = "<group>"; };
 		B65474322B39BFDF00D14ABF /* SphereView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereView.swift; sourceTree = "<group>"; };
 		B65474352B39C00800D14ABF /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
@@ -155,7 +159,6 @@
 				B63A7A602B390A4100A08210 /* Item.swift */,
 				B63A7A622B390A4200A08210 /* Assets.xcassets */,
 				B63A7A642B390A4200A08210 /* Preview Content */,
-				B63A7A882B390AB100A08210 /* TikTokDownloader.swift */,
 				B63A7A8A2B390BC100A08210 /* ShortVideoPlayer.swift */,
 				B63A7A8C2B39110900A08210 /* ShortVideoPlayerViewModel.swift */,
 				B63A7A982B39242D00A08210 /* ConverseView.swift */,
@@ -164,6 +167,7 @@
 				B6E3773C2B3EF44F009B8D10 /* TrendingFeedView.swift */,
 				B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */,
 				B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */,
+				B65080432B4801D600079FF7 /* ProfileFeedView.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -212,6 +216,8 @@
 				B65474322B39BFDF00D14ABF /* SphereView.swift */,
 				B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */,
 				B6E3773E2B3EFC67009B8D10 /* TiktokSamples.swift */,
+				B65080452B4925ED00079FF7 /* Router.swift */,
+				B65080472B493F1500079FF7 /* MainTabView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -380,15 +386,17 @@
 				B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */,
 				B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */,
 				B63A7A952B391B2700A08210 /* TiktokVideoData.swift in Sources */,
-				B63A7A892B390AB100A08210 /* TikTokDownloader.swift in Sources */,
 				B63A7A922B39159200A08210 /* AVPlayerView.swift in Sources */,
 				B6E3773B2B3E78CA009B8D10 /* TrendVideoData.swift in Sources */,
 				B63A7A8B2B390BC100A08210 /* ShortVideoPlayer.swift in Sources */,
 				B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */,
+				B65080482B493F1500079FF7 /* MainTabView.swift in Sources */,
 				B63A7A902B39126900A08210 /* VideoController.swift in Sources */,
 				B63A7A992B39242D00A08210 /* ConverseView.swift in Sources */,
 				B6EE47112B3CFA190048A604 /* DonateView.swift in Sources */,
+				B65080442B4801D600079FF7 /* ProfileFeedView.swift in Sources */,
 				B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */,
+				B65080462B4925ED00079FF7 /* Router.swift in Sources */,
 				B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */,
 				B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */,
 				B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */,
@@ -584,7 +592,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Debug;
 		};
@@ -622,7 +630,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,7";
 			};
 			name = Release;
 		};
