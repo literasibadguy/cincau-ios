@@ -31,6 +31,9 @@
 		B65474362B39C00800D14ABF /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474352B39C00800D14ABF /* Destination.swift */; };
 		B6BFDA3F2B401FD70021F536 /* ConverseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */; };
 		B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */; };
+		B6DAFA0E2B4BF6E1006A62EE /* ProfileFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */; };
+		B6DAFA112B4C0D8F006A62EE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B6DAFA102B4C0D8F006A62EE /* Kingfisher */; };
+		B6DAFA132B4C311D006A62EE /* TrendingFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */; };
 		B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E377372B3E55B3009B8D10 /* StoreKit.framework */; };
 		B6E3773B2B3E78CA009B8D10 /* TrendVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */; };
 		B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773C2B3EF44F009B8D10 /* TrendingFeedView.swift */; };
@@ -87,6 +90,8 @@
 		B65474352B39C00800D14ABF /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverseViewModel.swift; sourceTree = "<group>"; };
 		B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActionSheetView.swift; sourceTree = "<group>"; };
+		B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedViewModel.swift; sourceTree = "<group>"; };
+		B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingFeedViewModel.swift; sourceTree = "<group>"; };
 		B6E377372B3E55B3009B8D10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B6E377392B3E5719009B8D10 /* tokstore.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = tokstore.storekit; sourceTree = "<group>"; };
 		B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendVideoData.swift; sourceTree = "<group>"; };
@@ -103,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6DAFA112B4C0D8F006A62EE /* Kingfisher in Frameworks */,
 				B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +174,8 @@
 				B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */,
 				B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */,
 				B65080432B4801D600079FF7 /* ProfileFeedView.swift */,
+				B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */,
+				B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -263,6 +271,9 @@
 			dependencies = (
 			);
 			name = bestok;
+			packageProductDependencies = (
+				B6DAFA102B4C0D8F006A62EE /* Kingfisher */,
+			);
 			productName = bestok;
 			productReference = B63A7A592B390A4100A08210 /* bestok.app */;
 			productType = "com.apple.product-type.application";
@@ -335,6 +346,9 @@
 				Base,
 			);
 			mainGroup = B63A7A502B390A4100A08210;
+			packageReferences = (
+				B6DAFA0F2B4C0D8F006A62EE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = B63A7A5A2B390A4100A08210 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -392,7 +406,9 @@
 				B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */,
 				B65080482B493F1500079FF7 /* MainTabView.swift in Sources */,
 				B63A7A902B39126900A08210 /* VideoController.swift in Sources */,
+				B6DAFA0E2B4BF6E1006A62EE /* ProfileFeedViewModel.swift in Sources */,
 				B63A7A992B39242D00A08210 /* ConverseView.swift in Sources */,
+				B6DAFA132B4C311D006A62EE /* TrendingFeedViewModel.swift in Sources */,
 				B6EE47112B3CFA190048A604 /* DonateView.swift in Sources */,
 				B65080442B4801D600079FF7 /* ProfileFeedView.swift in Sources */,
 				B63A7A972B391FB500A08210 /* TikTokTranslator.swift in Sources */,
@@ -750,6 +766,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6DAFA0F2B4C0D8F006A62EE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B6DAFA102B4C0D8F006A62EE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6DAFA0F2B4C0D8F006A62EE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B63A7A512B390A4100A08210 /* Project object */;
 }

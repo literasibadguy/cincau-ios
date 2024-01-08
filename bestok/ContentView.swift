@@ -24,7 +24,7 @@ struct ContentView: View {
             case .home:
                 HomeView()
             case .support:
-                DonateView()
+                ProfileFeedView()
             }
         }
     }
