@@ -88,7 +88,6 @@ func karrik_font(_ size: FontViewKind, font_size: Double) -> Font {
 
 struct DetailVideoView: View {
     
-    let videoData: TiktokData
     
     @State private var completed = false
     @State private var tiktokUrl = ""
@@ -102,8 +101,16 @@ struct DetailVideoView: View {
     @StateObject private var converseViewModel: ConverseViewModel
     
     init(videoData: TiktokData) {
-        self.videoData = videoData
+//        self.videoData = videoData
         _converseViewModel = StateObject(wrappedValue: ConverseViewModel(state: .havent_converse, videoData: videoData))
+    }
+    
+    init(trendingData: TrendVideo) {
+        _converseViewModel = StateObject(wrappedValue: .init(trendData: trendingData))
+    }
+    
+    init(profileVideo: ProfileVideo) {
+        _converseViewModel = StateObject(wrappedValue: .init(profileVideo: profileVideo))
     }
     
     var ConverseButton: some View {
@@ -116,7 +123,7 @@ struct DetailVideoView: View {
         ZStack {
             Color(.black).ignoresSafeArea()
             
-            ShortVideoPlayer(url: videoData.play, video_size: .constant(nil), controller: VideoController(), tapInteraction: {
+            ShortVideoPlayer(url: converseViewModel.playUrl!, video_size: .constant(nil), controller: VideoController(), tapInteraction: {
                 withAnimation {
                     show_texts.toggle()
                 }
@@ -128,8 +135,8 @@ struct DetailVideoView: View {
                     
                     
                     VStack(alignment: .leading) {
-                        Text(videoData.author.nickname).font(karrik_font(.title, font_size: 1)).foregroundStyle(.windowBackground)
-                        Text(videoData.author.uniqueId).font(karrik_font(.subheadline, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(converseViewModel.authorName).font(karrik_font(.title, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(converseViewModel.uniqueId).font(karrik_font(.subheadline, font_size: 1)).foregroundStyle(.windowBackground)
                     }
                     
                     Spacer()
@@ -145,7 +152,7 @@ struct DetailVideoView: View {
                 Spacer()
                 
                 if show_texts {
-                    Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                    Text(converseViewModel.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
                 }
                 
                 Button(action: {
@@ -189,8 +196,8 @@ struct DetailVideoView: View {
                 HStack {
                     
                     VStack(alignment: .leading) {
-                        Text(videoData.musicInfo.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
-                        Text(videoData.musicInfo.author).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(converseViewModel.titleMusic).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(converseViewModel.artistMusic).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
                     }
                     
                     Spacer()
@@ -198,11 +205,13 @@ struct DetailVideoView: View {
             }.padding(.bottom, is_timeline ? 36 : 12).padding(.leading, 10)
             
         }.sheet(isPresented: $show_share_sheet) {
-            DownloadActionSheetView(videoData: videoData, downloadAction: {
-                show_share_sheet = true
-                converseViewModel.downloadVideo(url: videoData.hdPlay)
-                
-            }).frame(height: 360).presentationBackground(.clear)
+            if let videoData = converseViewModel.videoData {
+                DownloadActionSheetView(videoData: videoData, downloadAction: {
+                    show_share_sheet = true
+                    converseViewModel.downloadVideo(url: videoData.hdPlay)
+                    
+                }).frame(height: 360).presentationBackground(.clear)
+            }
         }.overlay {
             GeometryReader {_ in 
                 VStack {

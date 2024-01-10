@@ -12,16 +12,17 @@ fileprivate struct TipItem: View {
     
     let title: String
     let description: String
-    let pricing: Int
+    let pricing: String
     
     var body: some View {
         HStack(alignment: .center) {
             VStack(alignment: .leading) {
                 Text(title)
                 Text(description).foregroundStyle(.secondary)
+                Text(String(pricing)).foregroundStyle(.foreground).font(karrik_font(.normal, font_size: 1))
             }.font(karrik_font(.normal, font_size: 1))
             Spacer()
-            Text(String(pricing)).foregroundStyle(.foreground).font(karrik_font(.normal, font_size: 1))
+            
         }
     }
     
@@ -29,16 +30,26 @@ fileprivate struct TipItem: View {
 }
 
 struct DonateView: View {
+    
+    @StateObject var viewModel: DonateStoreViewModel = DonateStoreViewModel()
+    @State var isPurchased: Bool = false
+    @State var errorTitle: String = ""
+    
     var body: some View {
         NavigationView {
             VStack {
-                SupportDamus
+                SupportCincau
+                
                 
                 List {
-                    TipItem(title: "Insane Tip", description: "Thank you. Have a good day", pricing: 10)
-                    TipItem(title: "Generous Tip", description: "Thank you. Have a good day", pricing: 20)
-                    TipItem(title: "Insane Tip", description: "Thank you. Have a good day", pricing: 5)
-                    TipItem(title: "Insane Tip", description: "Thank you. Have a good day", pricing: 9)
+                    ForEach(viewModel.donations) { product in
+                        TipItem(title: product.displayName, description: product.description, pricing: product.displayPrice).onTapGesture {
+                            Task {
+                                await buy(product)
+                            }
+                        }
+                    }
+                    
                 }
                 
                 Spacer()
@@ -46,10 +57,22 @@ struct DonateView: View {
         }.navigationTitle("Support")
     }
     
-
+    private func buy(_ product: Product) async {
+        do {
+            if try await viewModel.purchase(product) != nil {
+                withAnimation {
+                    isPurchased = true
+                }
+            }
+        } catch StoreError.failedVerification {
+            errorTitle = "Your purchase could not be verified by the App Store"
+        } catch {
+            print("Failed purchase for \(product.id): \(error)")
+        }
+    }
 }
 
-    var SupportDamus: some View {
+    var SupportCincau: some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.black)
@@ -57,54 +80,23 @@ struct DonateView: View {
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Text(verbatim:"🧋")
-                    Text("Support Cincau", comment: "Text calling for the user to support Damus through zaps")
+                    Text("Support Cincau", comment: "Text calling for the user to support Cincau through app store")
                         .font(karrik_font(.title, font_size: 1))
                         .foregroundColor(.white)
                 }
+                
+
                 
                 Text("Help this humble Developer to create more apps and fun works", comment: "Text indicating the goal of developing Damus which the user can help with.")
                     .fixedSize(horizontal: false, vertical: true)
                     .foregroundColor(.white).font(karrik_font(.normal, font_size: 1))
                 
-//                HStack{
-//                    Spacer()
-//                    
-//                    VStack {
-//                        HStack {
-//                            Text("Amount Setting")
-//                                .font(.title)
-//                                .foregroundColor(.yellow)
-//                                .frame(width: 120)
-//                        }
-//                        
-//                        Text("Zap", comment: "Text underneath the number of sats indicating that it's the amount used for zaps.")
-//                            .foregroundColor(.white)
-//                    }
-//                    Spacer()
-//                    
-//                    Text(verbatim: "+")
-//                        .font(.title)
-//                        .foregroundColor(.white)
-//                    Spacer()
-//                    
-//                    VStack {
-//                        HStack {
-//                            Text("Tip Msats")
-//                                .font(.title)
-//                                .foregroundColor(.yellow)
-//                                .frame(width: 120)
-//                        }
-//                        
-//                        Text(verbatim:"💜")
-//                            .foregroundColor(.white)
-//                    }
-//                    Spacer()
-//                }
+
                 
             }
             .padding(25)
         }
-        .frame(height: 250)
+        .frame(height: 200)
     }
 
 

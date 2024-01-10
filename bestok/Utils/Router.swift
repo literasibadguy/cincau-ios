@@ -10,13 +10,16 @@ import UIKit
 import SwiftUI
 
 enum Route: Hashable {
-    case Profile
+    case Profile(uniqueId: String)
+    case DetailVideo(videoData: ProfileVideo)
     
     @ViewBuilder
     func view(navigationCoordinator: NavigationCoordinator) -> some View {
         switch self {
-        case .Profile:
-            ProfileFeedView()
+        case .Profile(let uniqueId):
+            ProfileFeedView(unique_id: .constant(uniqueId))
+        case .DetailVideo(let videoData):
+            DetailVideoView(profileVideo: videoData)
         }
     }
     
@@ -26,15 +29,32 @@ enum Route: Hashable {
     
     func hash(into hasher: inout Hasher) {
         switch self {
-        case .Profile:
+        case .Profile(let uniqueid):
             hasher.combine("profile")
+            hasher.combine(uniqueid)
+        case .DetailVideo(let videoData):
+            hasher.combine("detailVideo")
+            hasher.combine(videoData)
         }
     }
 }
 
 class NavigationCoordinator: ObservableObject {
+    @Published var path = [Route]()
     
     func push(route: Route) {
-        
+        print("pushing to : \(route)")
+        guard route != path.last else {
+            return
+        }
+        path.append(route)
+    }
+    
+    func isAtRoot() -> Bool {
+        return path.count == 0
+    }
+    
+    func popToRoot() {
+        path = []
     }
 }

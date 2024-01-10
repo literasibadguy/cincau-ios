@@ -17,11 +17,40 @@ class ConverseViewModel: NSObject, ObservableObject {
     @Published var expectedWritten: Int = 0
     @Published var totalWritten: Double = 0
     
-    let videoData: TiktokData
+//    let videoData: TiktokData
+    
+    // User profile
+    @Published var authorName: String = ""
+    @Published var uniqueId: String = ""
+    
+    @Published var title: String = ""
+    
+    @Published var titleMusic: String = ""
+    @Published var artistMusic: String = ""
+    
+    @Published var playUrl: URL?
+    
+    @Published var videoData: TiktokData?
     
     init(state: ConverseStatus, videoData: TiktokData) {
         self.state = state
+        self.authorName = videoData.author.nickname
+        self.playUrl = videoData.play
         self.videoData = videoData
+        self.title = videoData.title
+        self.titleMusic = videoData.musicInfo.title
+        self.artistMusic = videoData.musicInfo.author
+    }
+    
+    init(trendData: TrendVideo) {
+        self.state = .havent_converse
+        self.authorName = trendData.author.nickname
+    }
+    
+    init(profileVideo: ProfileVideo) {
+        self.state = .havent_converse
+        self.playUrl = profileVideo.play
+        self.title = profileVideo.title
     }
     
     func downloadVideo(url: URL) {
@@ -106,7 +135,7 @@ extension ConverseViewModel:  URLSessionDownloadDelegate {
             }
             
             let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let destinationURL = documentsURL.appendingPathComponent("\(videoData.title).mp4")
+            let destinationURL = documentsURL.appendingPathComponent("\(title).mp4")
             do {
                 try data.write(to: destinationURL)
                 saveVideoToAlbum(videoURL: destinationURL, albumName: "Cincau")

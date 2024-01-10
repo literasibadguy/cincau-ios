@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B612C76C2B4CD63F00018720 /* DonateStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612C76B2B4CD63F00018720 /* DonateStoreViewModel.swift */; };
 		B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A5C2B390A4100A08210 /* bestokApp.swift */; };
 		B63A7A5F2B390A4100A08210 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A5E2B390A4100A08210 /* ContentView.swift */; };
 		B63A7A612B390A4100A08210 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A602B390A4100A08210 /* Item.swift */; };
@@ -31,6 +32,8 @@
 		B65474362B39C00800D14ABF /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = B65474352B39C00800D14ABF /* Destination.swift */; };
 		B6BFDA3F2B401FD70021F536 /* ConverseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */; };
 		B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */; };
+		B6CF82712B4D4DC00003F2E6 /* TrendingVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CF82702B4D4DC00003F2E6 /* TrendingVideoView.swift */; };
+		B6CF82742B4ECDAD0003F2E6 /* KingfisherWebP in Frameworks */ = {isa = PBXBuildFile; productRef = B6CF82732B4ECDAD0003F2E6 /* KingfisherWebP */; };
 		B6DAFA0E2B4BF6E1006A62EE /* ProfileFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */; };
 		B6DAFA112B4C0D8F006A62EE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B6DAFA102B4C0D8F006A62EE /* Kingfisher */; };
 		B6DAFA132B4C311D006A62EE /* TrendingFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */; };
@@ -62,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B612C76B2B4CD63F00018720 /* DonateStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateStoreViewModel.swift; sourceTree = "<group>"; };
 		B63A7A592B390A4100A08210 /* bestok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bestok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63A7A5C2B390A4100A08210 /* bestokApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestokApp.swift; sourceTree = "<group>"; };
 		B63A7A5E2B390A4100A08210 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +94,7 @@
 		B65474352B39C00800D14ABF /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		B6BFDA3E2B401FD70021F536 /* ConverseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverseViewModel.swift; sourceTree = "<group>"; };
 		B6BFDA402B40E6000021F536 /* DownloadActionSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadActionSheetView.swift; sourceTree = "<group>"; };
+		B6CF82702B4D4DC00003F2E6 /* TrendingVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingVideoView.swift; sourceTree = "<group>"; };
 		B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedViewModel.swift; sourceTree = "<group>"; };
 		B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingFeedViewModel.swift; sourceTree = "<group>"; };
 		B6E377372B3E55B3009B8D10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -110,6 +115,7 @@
 			files = (
 				B6DAFA112B4C0D8F006A62EE /* Kingfisher in Frameworks */,
 				B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */,
+				B6CF82742B4ECDAD0003F2E6 /* KingfisherWebP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +182,8 @@
 				B65080432B4801D600079FF7 /* ProfileFeedView.swift */,
 				B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */,
 				B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */,
+				B612C76B2B4CD63F00018720 /* DonateStoreViewModel.swift */,
+				B6CF82702B4D4DC00003F2E6 /* TrendingVideoView.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 			name = bestok;
 			packageProductDependencies = (
 				B6DAFA102B4C0D8F006A62EE /* Kingfisher */,
+				B6CF82732B4ECDAD0003F2E6 /* KingfisherWebP */,
 			);
 			productName = bestok;
 			productReference = B63A7A592B390A4100A08210 /* bestok.app */;
@@ -348,6 +357,7 @@
 			mainGroup = B63A7A502B390A4100A08210;
 			packageReferences = (
 				B6DAFA0F2B4C0D8F006A62EE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				B6CF82722B4ECDAD0003F2E6 /* XCRemoteSwiftPackageReference "KingfisherWebP" */,
 			);
 			productRefGroup = B63A7A5A2B390A4100A08210 /* Products */;
 			projectDirPath = "";
@@ -399,10 +409,12 @@
 				B6BFDA3F2B401FD70021F536 /* ConverseViewModel.swift in Sources */,
 				B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */,
 				B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */,
+				B612C76C2B4CD63F00018720 /* DonateStoreViewModel.swift in Sources */,
 				B63A7A952B391B2700A08210 /* TiktokVideoData.swift in Sources */,
 				B63A7A922B39159200A08210 /* AVPlayerView.swift in Sources */,
 				B6E3773B2B3E78CA009B8D10 /* TrendVideoData.swift in Sources */,
 				B63A7A8B2B390BC100A08210 /* ShortVideoPlayer.swift in Sources */,
+				B6CF82712B4D4DC00003F2E6 /* TrendingVideoView.swift in Sources */,
 				B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */,
 				B65080482B493F1500079FF7 /* MainTabView.swift in Sources */,
 				B63A7A902B39126900A08210 /* VideoController.swift in Sources */,
@@ -768,6 +780,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B6CF82722B4ECDAD0003F2E6 /* XCRemoteSwiftPackageReference "KingfisherWebP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yeatse/KingfisherWebP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.3;
+			};
+		};
 		B6DAFA0F2B4C0D8F006A62EE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -779,6 +799,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B6CF82732B4ECDAD0003F2E6 /* KingfisherWebP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6CF82722B4ECDAD0003F2E6 /* XCRemoteSwiftPackageReference "KingfisherWebP" */;
+			productName = KingfisherWebP;
+		};
 		B6DAFA102B4C0D8F006A62EE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B6DAFA0F2B4C0D8F006A62EE /* XCRemoteSwiftPackageReference "Kingfisher" */;

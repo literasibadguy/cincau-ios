@@ -13,6 +13,8 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
+
+    
     @SceneStorage("ContentView.selected_mainmenu") var selected_menu: MainMenu = .home
     let customFont = Font.custom("Karrik-Regular", fixedSize: 12)
 
@@ -24,7 +26,7 @@ struct ContentView: View {
             case .home:
                 HomeView()
             case .support:
-                ProfileFeedView()
+               DonateView()
             }
         }
     }

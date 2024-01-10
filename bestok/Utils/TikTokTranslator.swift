@@ -26,6 +26,7 @@ struct TrendingFeed: Decodable {
 }
 
 struct ProfileFeed: Decodable {
+
     let code: Int
     let msg: String
     let processed_time: Double
@@ -53,6 +54,8 @@ struct ProfileFeed: Decodable {
 
 }
 
+private let USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0"
+
 public class TiktokTranslator: ObservableObject {
     private let session = URLSession.shared
     private let encoder = JSONEncoder()
@@ -72,7 +75,7 @@ public class TiktokTranslator: ObservableObject {
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0", forHTTPHeaderField: "User-Agent")
+        request.setValue(USER_AGENT, forHTTPHeaderField: "User-Agent")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         struct Response: Decodable {
@@ -94,7 +97,7 @@ public class TiktokTranslator: ObservableObject {
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0", forHTTPHeaderField: "User-Agent")
+        request.setValue(USER_AGENT, forHTTPHeaderField: "User-Agent")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
 
@@ -114,13 +117,27 @@ public class TiktokTranslator: ObservableObject {
         return response.videoData.hdPlay
     }
     
+    func translateForTrendingPosts(_ regionURL: String) async throws -> TrendingFeed {
+        
+        let url = try trendingURL("https://tikwm", path: "/api/feed/list", regionUrl: regionURL)
+        
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue(USER_AGENT, forHTTPHeaderField: "User-Agent")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let response: TrendingFeed = try await decodedData(for: request)
+        return response
+    }
+    
     func translateforUserPosts(_ uniqueId: String) async throws -> ProfileFeed {
         
         let url = try profileURL("https://tikwm.com", path: "/api/user/posts", uniqueId: uniqueId)
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.setValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:121.0) Gecko/20100101 Firefox/121.0", forHTTPHeaderField: "User-Agent")
+        request.setValue(USER_AGENT, forHTTPHeaderField: "User-Agent")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let response: ProfileFeed = try await decodedData(for: request)
@@ -132,8 +149,6 @@ public class TiktokTranslator: ObservableObject {
     
     private func download() {
         
-        let videoUrl = "http://7xp99e.com2.z0.glb.qiniucdn.com/2/video_article/6351A5E8_7F6C_4717_B91D_FE750634B5D5.mp4"
-        
         let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true).first!
         let destPath = NSString(string: documentPath).appendingPathComponent("video.mp4") as String
         
@@ -144,7 +159,7 @@ public class TiktokTranslator: ObservableObject {
         }
         
         
-        let downloadTask = URLSession.shared.downloadTask(with: URL(string: videoUrl)!) { (location, response, error) in
+        let downloadTask = URLSession.shared.downloadTask(with: URL(string: "")!) { (location, response, error) in
             guard let location else { return }
             
             UISaveVideoAtPathToSavedPhotosAlbum(location.absoluteString, nil, nil, nil)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProfileVideo: Decodable, Identifiable {
+struct ProfileVideo: Decodable, Identifiable, Hashable {
     let id: String
     let region: String
     let title: String
@@ -16,10 +16,10 @@ struct ProfileVideo: Decodable, Identifiable {
     let duration: Int
     let play: URL
     let wmPlay: URL
-    let size: Int
-    let wmSize: Int
-    let music: URL
-    let musicInfo: MusicInfo
+//    let size: Int
+//    let wmSize: Int
+//    let music: URL
+//    let musicInfo: MusicInfo
 //    let playCount: Int
 //    let diggCount: Int
 //    let commentCount: Int
@@ -41,10 +41,10 @@ struct ProfileVideo: Decodable, Identifiable {
         case duration
         case play
         case wmPlay = "wmplay"
-        case size
-        case wmSize = "wm_size"
-        case music
-        case musicInfo = "music_info"
+//        case size
+//        case wmSize = "wm_size"
+//        case music
+//        case musicInfo = "music_info"
 //        case playCount = "play_count"
 //        case diggCount = "digg_count"
 //        case commentCount = "comment_count"

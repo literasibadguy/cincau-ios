@@ -45,9 +45,14 @@ struct HomeView: View {
     
     @ObservedObject private var tiktokTranslator: TiktokTranslator = TiktokTranslator()
     
+    @EnvironmentObject var navigationCoordinator: NavigationCoordinator
+    
     @State private var tiktokUrl = ""
     
     @State private var tiktokVideo: TiktokData?
+    @State private var profileFeed: ProfileFeed?
+    
+    @State private var showProfile = false
     
     @State private var show_support = false
     
@@ -81,8 +86,12 @@ struct HomeView: View {
                     Spacer()
                     Button(action: {
                         Task {
-                            let converseStatus = await converse_tiktok(linkUrl: tiktokTranslator.tiktokUrl)
-                            tiktokVideo = converseStatus
+                            if tiktokTranslator.tiktokUrl.contains("tiktok.com") {
+                                let converseStatus = await converse_tiktok(linkUrl: tiktokTranslator.tiktokUrl)
+                                tiktokVideo = converseStatus
+                            } else {
+                                showProfile = true
+                            }
                         }
                         
                     }, label: {
@@ -105,6 +114,10 @@ struct HomeView: View {
                     DetailVideoView(videoData: tiktokData)
                 }.sheet(isPresented: $show_support, content: {
                     DonateView()
+                }).fullScreenCover(isPresented: $showProfile, onDismiss: {
+                    
+                }, content: {
+                    ProfileFeedView(unique_id: $tiktokTranslator.tiktokUrl).environmentObject(navigationCoordinator)
                 })
             }
         })
@@ -123,7 +136,7 @@ struct HomeView: View {
                         }
                     }
 
-                TextField("", text: $tiktokTranslator.tiktokUrl).textContentType(.URL)                             .nsecLoginStyle(key:  self.tiktokTranslator.tiktokUrl, title: "Paste TikTok URL here")
+                TextField("", text: $tiktokTranslator.tiktokUrl).foregroundStyle(.white).textContentType(.URL)                             .nsecLoginStyle(key:  self.tiktokTranslator.tiktokUrl, title: "Paste TikTok URL here")
             }
             .padding(.horizontal, 10)
             .overlay {

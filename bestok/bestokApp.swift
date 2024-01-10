@@ -23,10 +23,11 @@ struct bestokApp: App {
         }
     }()
 
+    @StateObject var navigationCoordinator: NavigationCoordinator = NavigationCoordinator()
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView().environmentObject(navigationCoordinator)
         }
         .modelContainer(sharedModelContainer)
         

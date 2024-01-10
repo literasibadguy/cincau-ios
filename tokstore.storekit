@@ -10,13 +10,13 @@
       "internalID" : "A9AEE59E",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "",
+          "description" : "Thanks for the Nice Tip",
+          "displayName" : "Nice Tip",
           "locale" : "en_US"
         }
       ],
-      "productID" : "nicetip",
-      "referenceName" : "Nice Tip",
+      "productID" : "insanetip",
+      "referenceName" : "Insane Tip",
       "type" : "NonConsumable"
     },
     {
@@ -25,13 +25,13 @@
       "internalID" : "089AFC8B",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "",
+          "description" : "Thanks for your gorgerous tip",
+          "displayName" : "Gorgeous Tip",
           "locale" : "en_US"
         }
       ],
-      "productID" : "generoustip",
-      "referenceName" : "Generous Tip",
+      "productID" : "gorgeoustip",
+      "referenceName" : "Gorgeous Tip",
       "type" : "NonConsumable"
     },
     {
@@ -40,13 +40,13 @@
       "internalID" : "D9CA28B2",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "",
+          "description" : "Started small thanks",
+          "displayName" : "Thanks Tip",
           "locale" : "en_US"
         }
       ],
-      "productID" : "goodtip",
-      "referenceName" : "Good Tip",
+      "productID" : "thankstip",
+      "referenceName" : "Thanks Tip",
       "type" : "NonConsumable"
     }
   ],

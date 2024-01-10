@@ -9,10 +9,19 @@ import SwiftUI
 
 struct DownloadActionSheetView: View {
     
-    let videoData: TiktokData
     let downloadAction: () -> Void
     
     @State private var sheetHeight: CGFloat = 360
+    
+    @State private var wmSize: Int = 0
+    @State private var hdSize: Int = 0
+    @State private var size: Int = 0
+    
+    init(videoData: TiktokData, downloadAction: @escaping () -> Void) {
+        self.wmSize = videoData.wmSize
+        self.hdSize = videoData.hdSize
+        self.downloadAction = downloadAction
+    }
     
     
     
@@ -30,9 +39,9 @@ struct DownloadActionSheetView: View {
     
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Downloads").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
-                        DownloadItemView(title: "Download with Watermark", size: videoData.wmSize, itemAction: downloadAction)
-                        DownloadItemView(title: "Download 1080p", size: videoData.hdSize, itemAction: downloadAction)
-                        DownloadItemView(title: "Download 720p", size: videoData.size, itemAction: downloadAction)
+                        DownloadItemView(title: "Download with Watermark", size: self.wmSize, itemAction: downloadAction)
+                        DownloadItemView(title: "Download 1080p", size: self.hdSize, itemAction: downloadAction)
+                        DownloadItemView(title: "Download 720p", size: self.size, itemAction: downloadAction)
                         
                         
                     }.padding().frame(height: 360).overlay {

@@ -17,14 +17,25 @@ struct TrendingFeedView: View {
     
     private var indexPosition: IndexPosition = .trailing
     
+    @StateObject private var viewModel: TrendingFeedViewModel = TrendingFeedViewModel()
+    
     var body: some View {
         GeometryReader { proxy in
                 
                 TabView {
+                    if !viewModel.trendingVideos.isEmpty {
+                        ForEach(viewModel.trendingVideos) { trendVideo in
+                            
+                        }
+                    }
                     DetailVideoView(videoData: .sample).frame(width: proxy.size.width, height: proxy.size.height).rotationEffect(.degrees(-90))
                         .rotation3DEffect(flippingAngle, axis: (x: 1, y: 0, z: 0)).offset(y: -10)
 
                     
+                }.onAppear {
+                    Task {
+                        
+                    }
                 }.frame(width: proxy.size.height, height: proxy.size.width)
                     .rotation3DEffect(flippingAngle, axis: (x: 1, y: 0, z: 0))
                     .rotationEffect(.degrees(90), anchor: .topLeading)
