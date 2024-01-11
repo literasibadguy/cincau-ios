@@ -51,6 +51,10 @@ class ConverseViewModel: NSObject, ObservableObject {
         self.state = .havent_converse
         self.playUrl = profileVideo.play
         self.title = profileVideo.title
+        self.authorName = profileVideo.author.nickname
+        self.uniqueId = profileVideo.author.uniqueId
+        self.titleMusic = profileVideo.musicInfo.title
+        self.artistMusic = profileVideo.musicInfo.author
     }
     
     func downloadVideo(url: URL) {

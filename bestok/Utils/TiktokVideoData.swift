@@ -81,7 +81,7 @@ struct Anchor: Decodable {
     }
 }
 
-struct MusicInfo: Decodable {
+struct MusicInfo: Decodable, Equatable, Hashable {
     let id: String
     let title: String
     let play: URL
@@ -117,7 +117,7 @@ struct CommerceInfo: Decodable {
     }
 }
 
-struct Author: Decodable {
+struct Author: Decodable, Identifiable, Hashable {
     let id: String
     let uniqueId: String
     let nickname: String

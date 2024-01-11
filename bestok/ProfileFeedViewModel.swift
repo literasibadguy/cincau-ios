@@ -27,12 +27,22 @@ class ProfileFeedViewModel: ObservableObject {
     
     func fetchPostsUser(unique_id: String) async {
         print("FETCHING \(unique_id)")
-        let posts = try? await tiktokTranslator.translateforUserPosts(unique_id)
+        do {
+            state = .loading
+            let posts = try await tiktokTranslator.translateforUserPosts(unique_id)
+            
+            videoData = posts.datas.videos
+            withAnimation {
+                state = .display(feedVideos: videoData)
+            }
+        } catch {
+            withAnimation {
+                state = .error(error: error)
+            }
+        }
+
         
-        guard let posts else { return }
-        videoData = posts.datas.videos
-        
-        print("IS THERE ANY VIDEO DATA: \(videoData)")
+//        print("IS THERE ANY VIDEO DATA: \(videoData)")
     }
     
 }

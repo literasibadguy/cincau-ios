@@ -16,13 +16,13 @@ struct ProfileVideo: Decodable, Identifiable, Hashable {
     let duration: Int
     let play: URL
     let wmPlay: URL
-//    let size: Int
-//    let wmSize: Int
-//    let music: URL
-//    let musicInfo: MusicInfo
-//    let playCount: Int
-//    let diggCount: Int
-//    let commentCount: Int
+    let size: Int
+    let wmSize: Int
+    let music: URL
+    let musicInfo: MusicInfo
+    let playCount: Int
+    let diggCount: Int
+    let commentCount: Int
 //    let shareCount: Int
 //    let downloadCount: Int
 //    let collectCount: Int
@@ -30,7 +30,7 @@ struct ProfileVideo: Decodable, Identifiable, Hashable {
 //    let anchors: [Anchor]?
 //    let commerceInfo: CommerceInfo
 //    let commercialVideoInfo: String
-//    let author: Author
+    let author: Author
     
     enum CodingKeys: String, CodingKey {
         case id = "video_id"
@@ -41,13 +41,13 @@ struct ProfileVideo: Decodable, Identifiable, Hashable {
         case duration
         case play
         case wmPlay = "wmplay"
-//        case size
-//        case wmSize = "wm_size"
-//        case music
-//        case musicInfo = "music_info"
-//        case playCount = "play_count"
-//        case diggCount = "digg_count"
-//        case commentCount = "comment_count"
+        case size
+        case wmSize = "wm_size"
+        case music
+        case musicInfo = "music_info"
+        case playCount = "play_count"
+        case diggCount = "digg_count"
+        case commentCount = "comment_count"
 //        case shareCount = "share_count"
 //        case downloadCount = "download_count"
 //        case collectCount = "collect_count"
@@ -55,7 +55,7 @@ struct ProfileVideo: Decodable, Identifiable, Hashable {
 //        case anchors
 //        case commerceInfo = "commerce_info"
 //        case commercialVideoInfo = "commercial_video_info"
-//        case author
+        case author
     }
 
 }

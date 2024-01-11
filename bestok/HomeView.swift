@@ -136,7 +136,7 @@ struct HomeView: View {
                         }
                     }
 
-                TextField("", text: $tiktokTranslator.tiktokUrl).foregroundStyle(.white).textContentType(.URL)                             .nsecLoginStyle(key:  self.tiktokTranslator.tiktokUrl, title: "Paste TikTok URL here")
+                TextField("", text: $tiktokTranslator.tiktokUrl).foregroundStyle(.white).textContentType(.URL)                             .nsecLoginStyle(key:  self.tiktokTranslator.tiktokUrl, title: "TikTok Video URL or Username Profile")
             }
             .padding(.horizontal, 10)
             .overlay {

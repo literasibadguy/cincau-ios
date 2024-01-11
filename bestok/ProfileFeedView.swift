@@ -9,6 +9,28 @@ import SwiftUI
 import Kingfisher
 import KingfisherWebP
 
+struct ProfileDismissBarView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            Spacer()
+            
+            Button(action: {
+                dismiss()
+            }, label: {
+                Image(systemName: "xmark.circle.fill")
+                    .frame(width: 33, height: 33)
+                    .background(.regularMaterial)
+                    .clipShape(Circle()).foregroundStyle(.black)
+            })
+            
+
+        }
+    }
+}
+
 struct ProfileFeedView: View {
     
     @StateObject private var viewModel: ProfileFeedViewModel = ProfileFeedViewModel()
@@ -22,18 +44,30 @@ struct ProfileFeedView: View {
     
     var body: some View {
         VStack {
-            Text(unique_id).font(karrik_font(.title, font_size: 1))
+            HStack(alignment: .center) {
+                Text(unique_id).font(karrik_font(.normal, font_size: 1))
+                
+                ProfileDismissBarView()
+            }.padding()
             
             ScrollView {
-                LazyVGrid(columns: viewModel.columns) {
-                    ForEach(viewModel.videoData) { profileVideo in
-                        ZStack {
-                            Img(url: profileVideo.cover)
-                        }.onTapGesture {
-                            selectedVideo = profileVideo
+                switch viewModel.state {
+                case .loading:
+                    ProgressView()
+                case .display(let feedVideos):
+                    LazyVGrid(columns: viewModel.columns) {
+                        ForEach(feedVideos) { profileVideo in
+                            ZStack {
+                                Img(url: profileVideo.originCover)
+                            }.onTapGesture {
+                                selectedVideo = profileVideo
+                            }
                         }
                     }
+                case .error(let error):
+                    Text("Error something happened")
                 }
+                
             }
         }.onAppear {
             Task {
