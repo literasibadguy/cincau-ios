@@ -16,8 +16,8 @@ struct ProfileVideo: Decodable, Identifiable, Hashable {
     let duration: Int
     let play: URL
     let wmPlay: URL
-    let size: Int
-    let wmSize: Int
+    let size: Int?
+    let wmSize: Int?
     let music: URL
     let musicInfo: MusicInfo
     let playCount: Int

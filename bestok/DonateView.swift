@@ -42,13 +42,21 @@ struct DonateView: View {
                 
                 
                 List {
-                    ForEach(viewModel.donations) { product in
-                        TipItem(title: product.displayName, description: product.description, pricing: product.displayPrice).onTapGesture {
-                            Task {
-                                await buy(product)
+                    switch viewModel.state {
+                    case .loading:
+                        ProgressView()
+                    case .store(let products):
+                        ForEach(viewModel.donations) { product in
+                            TipItem(title: product.displayName, description: product.description, pricing: product.displayPrice).onTapGesture {
+                                Task {
+                                    await buy(product)
+                                }
                             }
                         }
+                    case .error:
+                        Text("Something happened error")
                     }
+                    
                     
                 }
                 

@@ -23,7 +23,7 @@ struct AVPlayerView: UIViewControllerRepresentable {
         if uiViewController.player == nil {
             uiViewController.player = player
             uiViewController.showsPlaybackControls = false
-            player.play()
+//            player.play()
         }
     }
     

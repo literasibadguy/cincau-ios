@@ -18,10 +18,14 @@ class ConverseViewModel: NSObject, ObservableObject {
     @Published var totalWritten: Double = 0
     
 //    let videoData: TiktokData
+    enum VideoState {
+        case initial, loading, display(tiktokData: TiktokData), error(error: Error)
+    }
     
     // User profile
     @Published var authorName: String = ""
     @Published var uniqueId: String = ""
+    @Published var videoId: String = ""
     
     @Published var title: String = ""
     
@@ -29,8 +33,11 @@ class ConverseViewModel: NSObject, ObservableObject {
     @Published var artistMusic: String = ""
     
     @Published var playUrl: URL?
-    
     @Published var videoData: TiktokData?
+    
+    @Published var loadState: VideoState = .initial
+
+    private let tiktokTranslator: TiktokTranslator = TiktokTranslator()
     
     init(state: ConverseStatus, videoData: TiktokData) {
         self.state = state
@@ -51,10 +58,29 @@ class ConverseViewModel: NSObject, ObservableObject {
         self.state = .havent_converse
         self.playUrl = profileVideo.play
         self.title = profileVideo.title
+        self.videoId = profileVideo.id
         self.authorName = profileVideo.author.nickname
         self.uniqueId = profileVideo.author.uniqueId
         self.titleMusic = profileVideo.musicInfo.title
         self.artistMusic = profileVideo.musicInfo.author
+    }
+    
+    func getExtraVideoData() async {
+        do {
+            loadState = .loading
+            let tiktokUrl = "https://tiktok.com/@\(self.uniqueId)/\(self.videoId)"
+            
+            let videoData = try await tiktokTranslator.translateForVideoData(tiktokUrl)
+            
+            withAnimation {
+                loadState = .display(tiktokData: videoData)
+                self.videoData = videoData
+            }
+        } catch {
+            withAnimation {
+                loadState = .error(error: error)
+            }
+        }
     }
     
     func downloadVideo(url: URL) {
@@ -68,11 +94,10 @@ class ConverseViewModel: NSObject, ObservableObject {
             }
             task.resume()
         
-        
-            Task { @MainActor in
-                self.state = .conversing
-                downloading = true
-            }
+        withAnimation {
+            self.state = .conversing
+            downloading = true
+        }
             
         }
     
@@ -143,12 +168,12 @@ extension ConverseViewModel:  URLSessionDownloadDelegate {
             do {
                 try data.write(to: destinationURL)
                 saveVideoToAlbum(videoURL: destinationURL, albumName: "Cincau")
-                Task { @MainActor in
+                withAnimation {
                     self.state = .conversed(destinationURL)
                     self.downloading = false
                 }
             } catch {
-                Task { @MainActor in
+                withAnimation {
                     self.state = .error
                     self.downloading = false
                 }

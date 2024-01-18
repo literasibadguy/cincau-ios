@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 /// get coordinates in Global reference frame given a Local point & geometry
 func globalCoordinate(localX x: CGFloat, localY y: CGFloat,
@@ -16,6 +17,7 @@ func globalCoordinate(localX x: CGFloat, localY y: CGFloat,
     )
 }
 
+@MainActor
 struct ShortVideoPlayer: View {
     
     
@@ -23,6 +25,8 @@ struct ShortVideoPlayer: View {
     let tapInteraction: () -> Void
     
     @StateObject var model: ShortVideoPlayerViewModel
+    
+    @Environment(\.scenePhase) private var scenePhase
     
     #if os(visionOS)
     @State private var currentStyle: ImmersionStyle = .full
@@ -63,6 +67,11 @@ struct ShortVideoPlayer: View {
             }.onTapGesture(count: 2, perform: {
                 tapInteraction()
             }).onAppear {
+                DispatchQueue.global().async {
+                    try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+                    try? AVAudioSession.sharedInstance().setCategory(.playback, options: .duckOthers)
+                    try? AVAudioSession.sharedInstance().setActive(true)
+                }
                 #if os(visionOS)
                 Task {
                     guard !isPresentingSpace else { return }
@@ -74,8 +83,22 @@ struct ShortVideoPlayer: View {
                     }
                 }
                 #endif
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    model.player.play()
+                }
+            }.onDisappear {
+                model.player.pause()
+                
+                DispatchQueue.global().async {
+                    try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+                    try? AVAudioSession.sharedInstance().setCategory(.ambient, options: .mixWithOthers)
+                    try? AVAudioSession.sharedInstance().setActive(true)
+                }
             }
 
+        }.onAppear {
+            
         }
     }
     

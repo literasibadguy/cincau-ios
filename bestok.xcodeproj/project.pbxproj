@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B612C76C2B4CD63F00018720 /* DonateStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B612C76B2B4CD63F00018720 /* DonateStoreViewModel.swift */; };
+		B63035562B51FEF200D74A36 /* Notify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63035552B51FEF200D74A36 /* Notify.swift */; };
+		B63035582B52013B00D74A36 /* ScrollToBottomNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63035572B52013B00D74A36 /* ScrollToBottomNotify.swift */; };
 		B63A7A5D2B390A4100A08210 /* bestokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A5C2B390A4100A08210 /* bestokApp.swift */; };
 		B63A7A5F2B390A4100A08210 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A5E2B390A4100A08210 /* ContentView.swift */; };
 		B63A7A612B390A4100A08210 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63A7A602B390A4100A08210 /* Item.swift */; };
@@ -66,6 +68,8 @@
 
 /* Begin PBXFileReference section */
 		B612C76B2B4CD63F00018720 /* DonateStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateStoreViewModel.swift; sourceTree = "<group>"; };
+		B63035552B51FEF200D74A36 /* Notify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notify.swift; sourceTree = "<group>"; };
+		B63035572B52013B00D74A36 /* ScrollToBottomNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollToBottomNotify.swift; sourceTree = "<group>"; };
 		B63A7A592B390A4100A08210 /* bestok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bestok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63A7A5C2B390A4100A08210 /* bestokApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bestokApp.swift; sourceTree = "<group>"; };
 		B63A7A5E2B390A4100A08210 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 				B6E3773E2B3EFC67009B8D10 /* TiktokSamples.swift */,
 				B65080452B4925ED00079FF7 /* Router.swift */,
 				B65080472B493F1500079FF7 /* MainTabView.swift */,
+				B63035552B51FEF200D74A36 /* Notify.swift */,
+				B63035572B52013B00D74A36 /* ScrollToBottomNotify.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 				B63A7A5F2B390A4100A08210 /* ContentView.swift in Sources */,
 				B63A7A612B390A4100A08210 /* Item.swift in Sources */,
 				B65474362B39C00800D14ABF /* Destination.swift in Sources */,
+				B63035582B52013B00D74A36 /* ScrollToBottomNotify.swift in Sources */,
 				B6BFDA3F2B401FD70021F536 /* ConverseViewModel.swift in Sources */,
 				B63A7A8D2B39110900A08210 /* ShortVideoPlayerViewModel.swift in Sources */,
 				B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */,
@@ -428,6 +435,7 @@
 				B65474332B39BFDF00D14ABF /* SphereView.swift in Sources */,
 				B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */,
 				B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */,
+				B63035562B51FEF200D74A36 /* Notify.swift in Sources */,
 				B6E3773F2B3EFC67009B8D10 /* TiktokSamples.swift in Sources */,
 				B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */,
 				B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */,

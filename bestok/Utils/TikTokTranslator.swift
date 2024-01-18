@@ -131,9 +131,9 @@ public class TiktokTranslator: ObservableObject {
         return response
     }
     
-    func translateforUserPosts(_ uniqueId: String) async throws -> ProfileFeed {
+    func translateforUserPosts(_ uniqueId: String, cursorId: String) async throws -> ProfileFeed {
         
-        let url = try profileURL("https://tikwm.com", path: "/api/user/posts", uniqueId: uniqueId)
+        let url = try profileURL("https://tikwm.com", path: "/api/user/posts", uniqueId: uniqueId, cursorId: cursorId)
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -144,7 +144,10 @@ public class TiktokTranslator: ObservableObject {
         print("WHAT IS MY RESPONSE HERE: \(response)")
         return response
     }
-    
+//    
+//    func translateForNextPosts(_ uniqueId: String, cursor: String) async throws -> ProfileFeed {
+//        
+//    }
 
     
     private func download() {
@@ -192,14 +195,14 @@ public class TiktokTranslator: ObservableObject {
         return url
     }
     
-    private func profileURL(_ baseUrl: String, path: String, uniqueId: String) throws -> URL {
+    private func profileURL(_ baseUrl: String, path: String, uniqueId: String, cursorId: String = "") throws -> URL {
         guard var components = URLComponents(string: baseUrl) else {
             throw URLError(.badURL)
         }
         
 //        https://www.tikwm.com/api/user/posts?unique_id=@fujiiian&hd=1
         
-        let queryItems = [URLQueryItem(name: "unique_id", value: uniqueId), URLQueryItem(name: "hd", value: "1")]
+        let queryItems = [URLQueryItem(name: "unique_id", value: uniqueId), URLQueryItem(name: "hd", value: "1"), URLQueryItem(name: "cursor", value: cursorId)]
         components.path = path
         components.queryItems = queryItems
 

@@ -17,6 +17,8 @@ struct ContentView: View {
     
     @SceneStorage("ContentView.selected_mainmenu") var selected_menu: MainMenu = .home
     let customFont = Font.custom("Karrik-Regular", fixedSize: 12)
+    
+
 
     func MainContent() -> some View {
         VStack {

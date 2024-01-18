@@ -76,6 +76,7 @@ final class ShortVideoPlayerViewModel: ObservableObject {
             await load()
         }
         
+        
         is_muted = controller.should_mute_video(url: url)
         player.isMuted = is_muted
         
@@ -94,6 +95,18 @@ final class ShortVideoPlayerViewModel: ObservableObject {
         
         observeVideoSize()
         observeDuration()
+        
+    }
+    
+    func preparePlayer() {
+        player.audiovisualBackgroundPlaybackPolicy = .pauses
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main)
+        {
+            _ in
+            Task { @MainActor [weak self] in
+                self?.play()
+            }
+        }
     }
     
     private func observeVideoSize() {
@@ -118,7 +131,7 @@ final class ShortVideoPlayerViewModel: ObservableObject {
         })
     }
     
-    private func load() async {
+    func load() async {
         if let meta = controller.metadata(for: url) {
             has_audio = meta.has_audio
             video_size = meta.size
@@ -128,6 +141,11 @@ final class ShortVideoPlayerViewModel: ObservableObject {
         }
         
         is_loading = false
+    }
+    
+    func play() {
+        player.seek(to: CMTime.zero)
+        player.play()
     }
     
     func did_tap_mute_button() {

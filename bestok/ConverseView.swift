@@ -97,7 +97,6 @@ struct DetailVideoView: View {
     
     @State private var is_timeline = true
     
-    
     @StateObject private var converseViewModel: ConverseViewModel
     
     init(videoData: TiktokData) {
@@ -115,7 +114,7 @@ struct DetailVideoView: View {
     
     var ConverseButton: some View {
         Button("Download Video") {
-            converse()
+//            converse()
         }
     }
     
@@ -128,6 +127,17 @@ struct DetailVideoView: View {
                     show_texts.toggle()
                 }
             })
+            
+            switch converseViewModel.loadState {
+            case .initial:
+                EmptyView()
+            case .loading:
+                ProgressView()
+            case .display(_):
+               EmptyView()
+            case .error(_):
+                Text("Something error")
+            }
             
             VStack {
                 HStack() {
@@ -156,28 +166,41 @@ struct DetailVideoView: View {
                 }
                 
                 Button(action: {
-//                    Task {
-//                        let converseStatus = await converse_tiktok(linkUrl: tiktokUrl)
-//                        tiktokVideo = converseStatus
-//                    }
-                    show_share_sheet = true
+
+                    if (converseViewModel.videoData != nil) {
+                        show_share_sheet = true
+                    }
+                    Task {
+                        await converseViewModel.getExtraVideoData()
+                    }
                 }, label: {
                     HStack {
                         Group {
                             switch converseViewModel.state {
                             case .havent_converse:
                                 Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-                                
                             case .conversed(_):
                                 Text("Completed").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-                                
                             case .error:
                                 Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
-                                
                             case .conversing:
                                 Text("Downloading").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
-                                
                             }
+                            
+//                            switch converseViewModel.loadState {
+//                            case .initial:
+//                                Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+//                                break
+//                            case .loading:
+//                                Text("Please wait").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+//                                break
+//                            case .display(_):
+//                                Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+//                                break
+//                            case .error(_):
+//                                Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
+//                                break
+//                            }
                         }
                     }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
                 }).buttonStyle(WhiteBorderButtonStyle(padding: 16)).padding()
@@ -212,8 +235,14 @@ struct DetailVideoView: View {
                     
                 }).frame(height: 360).presentationBackground(.clear)
             }
+        }.sheet(item: $converseViewModel.videoData) { videoData in
+            DownloadActionSheetView(videoData: videoData, downloadAction: {
+                show_share_sheet = true
+                converseViewModel.downloadVideo(url: videoData.hdPlay)
+                
+            }).frame(height: 360).presentationBackground(.clear)
         }.overlay {
-            GeometryReader {_ in 
+            GeometryReader {_ in
                 VStack {
                     
                     HStack {
@@ -231,14 +260,15 @@ struct DetailVideoView: View {
         }.statusBarHidden(false)
     }
     
-    func converse() {
-        Task {
-            let res = await converse_tiktok(linkUrl: tiktokUrl)
-            DispatchQueue.main.async {
-                self.completed = true
-            }
-        }
-    }
+//    func converse_tiktok(linkUrl: String) async -> TiktokData? {
+//        let conversed_tiktok = try? await converseViewModel.translateForVideoData(linkUrl)
+//        
+//        guard let conversed_tiktok else {
+//            return nil
+//        }
+//        
+//        return conversed_tiktok
+//    }
     
 
 }
