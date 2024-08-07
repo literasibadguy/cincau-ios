@@ -146,12 +146,17 @@ final class ShortVideoPlayerViewModel: ObservableObject {
     func play() {
         player.seek(to: CMTime.zero)
         player.play()
+        player.isMuted = false
     }
     
     func did_tap_mute_button() {
         is_muted.toggle()
         player.isMuted = is_muted
         controller.toggle_should_mute_video(url: url)
+    }
+    
+    func good_tap_mute_button() {
+        is_muted.toggle()
     }
     
     func set_view_is_visible(_ is_visible: Bool) {

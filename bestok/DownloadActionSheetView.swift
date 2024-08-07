@@ -35,15 +35,11 @@ struct DownloadActionSheetView: View {
                 
                 VStack(spacing: 1) {
                     
-                    
-    
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Downloads").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
                         DownloadItemView(title: "Download with Watermark", size: self.wmSize, itemAction: downloadAction)
                         DownloadItemView(title: "Download 1080p", size: self.hdSize, itemAction: downloadAction)
                         DownloadItemView(title: "Download 720p", size: self.size, itemAction: downloadAction)
-                        
-                        
                     }.padding().frame(height: 360).overlay {
                         GeometryReader { geometry in
                             Color.clear.preference(key: InnerHeightPreferenceKey.self, value: geometry.size.height)
@@ -78,9 +74,9 @@ struct  DownloadItemView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
-                    Text(title).foregroundStyle(.windowBackground)
+                    Text(title)
                     
-                    Text(formatSizeFile(size)).foregroundStyle(.windowBackground)
+                    Text(formatSizeFile(size))
                     
             }.font(karrik_font(.normal, font_size: 1))
             

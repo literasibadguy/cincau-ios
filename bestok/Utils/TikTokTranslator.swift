@@ -21,8 +21,6 @@ struct TrendingFeed: Decodable {
         case processed_time
         case datas = "data"
     }
-    
-
 }
 
 struct ProfileFeed: Decodable {

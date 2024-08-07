@@ -183,7 +183,5 @@ extension ConverseViewModel:  URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         totalWritten = downloadTask.progress.fractionCompleted
-//        expectedWritten = Int(totalBytesExpectedToWrite)
-//        totalWritten = Int(totalBytesWritten)
     }
 }

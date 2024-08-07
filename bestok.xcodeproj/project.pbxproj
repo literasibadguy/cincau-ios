@@ -39,7 +39,6 @@
 		B6DAFA0E2B4BF6E1006A62EE /* ProfileFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */; };
 		B6DAFA112B4C0D8F006A62EE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B6DAFA102B4C0D8F006A62EE /* Kingfisher */; };
 		B6DAFA132B4C311D006A62EE /* TrendingFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */; };
-		B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6E377372B3E55B3009B8D10 /* StoreKit.framework */; };
 		B6E3773B2B3E78CA009B8D10 /* TrendVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */; };
 		B6E3773D2B3EF44F009B8D10 /* TrendingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773C2B3EF44F009B8D10 /* TrendingFeedView.swift */; };
 		B6E3773F2B3EFC67009B8D10 /* TiktokSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E3773E2B3EFC67009B8D10 /* TiktokSamples.swift */; };
@@ -47,6 +46,7 @@
 		B6EE470D2B3CF54C0048A604 /* Karrik-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6EE470B2B3CF54C0048A604 /* Karrik-Regular.ttf */; };
 		B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE470E2B3CF5730048A604 /* HomeView.swift */; };
 		B6EE47112B3CFA190048A604 /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE47102B3CFA190048A604 /* DonateView.swift */; };
+		B6EE61092B61D7E0005A7013 /* VisionDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EE61082B61D7E0005A7013 /* VisionDestinationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,6 @@
 		B6CF82702B4D4DC00003F2E6 /* TrendingVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingVideoView.swift; sourceTree = "<group>"; };
 		B6DAFA0D2B4BF6E1006A62EE /* ProfileFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedViewModel.swift; sourceTree = "<group>"; };
 		B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingFeedViewModel.swift; sourceTree = "<group>"; };
-		B6E377372B3E55B3009B8D10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B6E377392B3E5719009B8D10 /* tokstore.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = tokstore.storekit; sourceTree = "<group>"; };
 		B6E3773A2B3E78CA009B8D10 /* TrendVideoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendVideoData.swift; sourceTree = "<group>"; };
 		B6E3773C2B3EF44F009B8D10 /* TrendingFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingFeedView.swift; sourceTree = "<group>"; };
@@ -110,6 +109,7 @@
 		B6EE470B2B3CF54C0048A604 /* Karrik-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Karrik-Regular.ttf"; sourceTree = "<group>"; };
 		B6EE470E2B3CF5730048A604 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B6EE47102B3CFA190048A604 /* DonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateView.swift; sourceTree = "<group>"; };
+		B6EE61082B61D7E0005A7013 /* VisionDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDestinationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +118,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6DAFA112B4C0D8F006A62EE /* Kingfisher in Frameworks */,
-				B6E377382B3E55B3009B8D10 /* StoreKit.framework in Frameworks */,
 				B6CF82742B4ECDAD0003F2E6 /* KingfisherWebP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +187,7 @@
 				B6DAFA122B4C311D006A62EE /* TrendingFeedViewModel.swift */,
 				B612C76B2B4CD63F00018720 /* DonateStoreViewModel.swift */,
 				B6CF82702B4D4DC00003F2E6 /* TrendingVideoView.swift */,
+				B6EE61082B61D7E0005A7013 /* VisionDestinationView.swift */,
 			);
 			path = bestok;
 			sourceTree = "<group>";
@@ -255,7 +255,6 @@
 		B6E377362B3E55B3009B8D10 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B6E377372B3E55B3009B8D10 /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -436,6 +435,7 @@
 				B6EE470F2B3CF5730048A604 /* HomeView.swift in Sources */,
 				B6BFDA412B40E6000021F536 /* DownloadActionSheetView.swift in Sources */,
 				B63035562B51FEF200D74A36 /* Notify.swift in Sources */,
+				B6EE61092B61D7E0005A7013 /* VisionDestinationView.swift in Sources */,
 				B6E3773F2B3EFC67009B8D10 /* TiktokSamples.swift in Sources */,
 				B65474312B39BCD000D14ABF /* VisionViewModifiers.swift in Sources */,
 				B63A7A9C2B3989AA00A08210 /* VideoCarousel.swift in Sources */,

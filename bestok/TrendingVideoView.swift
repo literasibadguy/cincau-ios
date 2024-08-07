@@ -39,8 +39,8 @@ struct TrendingVideoView: View {
                 HStack() {
                     
                     VStack(alignment: .leading) {
-                        Text(videoData.author.nickname).font(karrik_font(.title, font_size: 1)).foregroundStyle(.windowBackground)
-                        Text(videoData.author.uniqueId).font(karrik_font(.subheadline, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(videoData.author.nickname).font(karrik_font(.title, font_size: 1))
+                        Text(videoData.author.uniqueId).font(karrik_font(.subheadline, font_size: 1))
                     }
                     
                     Spacer()
@@ -56,7 +56,8 @@ struct TrendingVideoView: View {
                 Spacer()
                 
                 if show_texts {
-                    Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                    
+                    Text(videoData.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.white)
                 }
                 
                 Button(action: {
@@ -100,8 +101,8 @@ struct TrendingVideoView: View {
                 HStack {
                     
                     VStack(alignment: .leading) {
-                        Text(videoData.musicInfo.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
-                        Text(videoData.musicInfo.author).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(videoData.musicInfo.title).font(karrik_font(.small, font_size: 1))
+                        Text(videoData.musicInfo.author).font(karrik_font(.small, font_size: 1))
                     }
                     
                     Spacer()

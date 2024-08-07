@@ -102,21 +102,6 @@ struct ProfileFeedView: View {
                         }
                     }
 
-//                    switch viewModel.state {
-//                    case .loading:
-//                        break
-//                    case .display(_, let nextPageState):
-//                        switch nextPageState {
-//                        case .hasNextPage:
-//                            Task {
-//                                await viewModel.fetchForNextPosts(unique_id: unique_id, cursor_id: viewModel.cursorId)
-//                            }
-//                        default:
-//                            break
-//                        }
-//                    case .error(let error):
-//                        break
-//                    }
                 }
             }
         }.onAppear {

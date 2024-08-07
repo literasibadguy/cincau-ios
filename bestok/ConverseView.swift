@@ -43,7 +43,7 @@ struct NavDismissBarView: View {
                 Image(systemName: "xmark.circle.fill")
                     .frame(width: 33, height: 33)
                     .background(.regularMaterial)
-                    .clipShape(Circle()).foregroundStyle(.windowBackground)
+                    .clipShape(Circle())
             })
             
 
@@ -142,11 +142,9 @@ struct DetailVideoView: View {
             VStack {
                 HStack() {
                     
-                    
-                    
                     VStack(alignment: .leading) {
-                        Text(converseViewModel.authorName).font(karrik_font(.title, font_size: 1)).foregroundStyle(.windowBackground)
-                        Text(converseViewModel.uniqueId).font(karrik_font(.subheadline, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(converseViewModel.authorName).font(karrik_font(.title, font_size: 1))
+                        Text(converseViewModel.uniqueId).font(karrik_font(.subheadline, font_size: 1))
                     }
                     
                     Spacer()
@@ -162,11 +160,10 @@ struct DetailVideoView: View {
                 Spacer()
                 
                 if show_texts {
-                    Text(converseViewModel.title).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                    Text(converseViewModel.title).font(karrik_font(.small, font_size: 1))
                 }
                 
                 Button(action: {
-
                     if (converseViewModel.videoData != nil) {
                         show_share_sheet = true
                     }
@@ -187,20 +184,6 @@ struct DetailVideoView: View {
                                 Text("Downloading").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.red)
                             }
                             
-//                            switch converseViewModel.loadState {
-//                            case .initial:
-//                                Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-//                                break
-//                            case .loading:
-//                                Text("Please wait").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-//                                break
-//                            case .display(_):
-//                                Text("Download").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-//                                break
-//                            case .error(_):
-//                                Text("Error").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.white)
-//                                break
-//                            }
                         }
                     }.frame(minWidth: 300, maxWidth: .infinity, alignment: .center)
                 }).buttonStyle(WhiteBorderButtonStyle(padding: 16)).padding()
@@ -219,8 +202,8 @@ struct DetailVideoView: View {
                 HStack {
                     
                     VStack(alignment: .leading) {
-                        Text(converseViewModel.titleMusic).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
-                        Text(converseViewModel.artistMusic).font(karrik_font(.small, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text(converseViewModel.titleMusic).font(karrik_font(.small, font_size: 1))
+                        Text(converseViewModel.artistMusic).font(karrik_font(.small, font_size: 1))
                     }
                     
                     Spacer()

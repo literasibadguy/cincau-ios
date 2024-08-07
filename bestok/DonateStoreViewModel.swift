@@ -31,6 +31,7 @@ class DonateStoreViewModel: ObservableObject {
         }
     }
     
+    #if os(iOS)
     func purchase(_ product: Product) async throws -> StoreKit.Transaction? {
         let result = try await product.purchase()
         
@@ -47,6 +48,7 @@ class DonateStoreViewModel: ObservableObject {
             return nil
         }
     }
+    #endif
     
     func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
         switch result {

@@ -40,7 +40,6 @@ struct DonateView: View {
             VStack {
                 SupportCincau
                 
-                
                 List {
                     switch viewModel.state {
                     case .loading:
@@ -49,7 +48,9 @@ struct DonateView: View {
                         ForEach(viewModel.donations) { product in
                             TipItem(title: product.displayName, description: product.description, pricing: product.displayPrice).onTapGesture {
                                 Task {
+                                    #if os(iOS)
                                     await buy(product)
+                                    #endif
                                 }
                             }
                         }
@@ -65,6 +66,7 @@ struct DonateView: View {
         }.navigationTitle("Support")
     }
     
+    #if os(iOS)
     private func buy(_ product: Product) async {
         do {
             if try await viewModel.purchase(product) != nil {
@@ -78,6 +80,7 @@ struct DonateView: View {
             print("Failed purchase for \(product.id): \(error)")
         }
     }
+    #endif
 }
 
     var SupportCincau: some View {

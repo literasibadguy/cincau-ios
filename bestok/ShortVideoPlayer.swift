@@ -57,7 +57,7 @@ struct ShortVideoPlayer: View {
                 if model.is_loading {
                     ProgressView()
                         .progressViewStyle(.circular)
-                        .foregroundStyle(.windowBackground)
+//                        .foregroundStyle(.windowBackground)
                         .scaleEffect(CGSize(width: 1.5, height: 1.5))
                 }
 
@@ -72,17 +72,17 @@ struct ShortVideoPlayer: View {
                     try? AVAudioSession.sharedInstance().setCategory(.playback, options: .duckOthers)
                     try? AVAudioSession.sharedInstance().setActive(true)
                 }
-                #if os(visionOS)
-                Task {
-                    guard !isPresentingSpace else { return }
-                    // The navigationPath has one video, or is empty.
-                    // Await the request to open the destination and set the state accordingly.
-                    switch await openSpace(value: "aespa_scene") {
-                    case .opened: isPresentingSpace = true
-                    default: isPresentingSpace = false
-                    }
-                }
-                #endif
+//                #if os(visionOS)
+//                Task {
+//                    guard !isPresentingSpace else { return }
+//                    // The navigationPath has one video, or is empty.
+//                    // Await the request to open the destination and set the state accordingly.
+//                    switch await openSpace(value: "aespa_scene") {
+//                    case .opened: isPresentingSpace = true
+//                    default: isPresentingSpace = false
+//                    }
+//                }
+//                #endif
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                     model.player.play()

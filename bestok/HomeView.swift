@@ -72,7 +72,7 @@ struct HomeView: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Cincau").font(karrik_font(.title, font_size: 1)).foregroundStyle(.white)
 
-                        Text("Download TikTok Video without label watermark, high quality").font(karrik_font(.normal, font_size: 1)).foregroundStyle(.windowBackground)
+                        Text("Download TikTok Video without label watermark, high quality").font(karrik_font(.normal, font_size: 1))
                     }.padding()
                     
                     Spacer()
